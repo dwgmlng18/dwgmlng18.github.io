@@ -1,348 +1,318 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CV - Dewa gemilang</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Dewa Gemilang - Software Engineer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 120px 0 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
 
-    <!-- Google Font (Kustomisasi Font) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap" rel="stylesheet">
+        .profile-img {
+            border: 4px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
 
+        .card {
+            border: none;
+            transition: transform 0.3s ease;
+            border-radius: 16px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: #f8f9fa;
+            margin: 5px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background: #6366f1;
+            color: white;
+        }
+
+        .timeline-item {
+            padding: 20px;
+            border-left: 2px solid #6366f1;
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 28px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #6366f1;
+        }
+
+        .contact-card {
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: scale(1.02);
+        }
+
+        .navbar {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #6366f1;
+        }
+    </style>
 </head>
-
-<body class="bg-light" style="font-family: Nunito, sans-serif;">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top shadow-sm bg-white">
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <b>@dewa_gemilang</b>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <a class="navbar-brand fw-bold text-primary" href="#">DG</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item ps-3">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item ps-3">
-                        <a class="nav-link" href="#pendidikan">Riwayat Pendidikan</a>
-                    </li>
-                    <li class="nav-item ps-3">
-                        <a class="nav-link" href="#keahlian">Keahlian</a>
-                    </li>
-                    <li class="nav-item ps-3">
-                        <a class="nav-link" href="#kontak">Hubungi Saya</a>
-                    </li>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link px-3" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#contact">Contact</a></li>
                 </ul>
-
-                <div class="d-flex">
-                    <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalKontak">
-                        <b>Hubungi Saya</b>
-                    </a>
-                </div>
             </div>
         </div>
     </nav>
 
-    <div class="pt-4"></div>
-
-    <section class="mt-5 pt-5">
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
         <div class="container">
-            <div class="row">
-                <div class="col-md-3 mb-5 mb-md-0">
-                    <img src="assets/images/dewa gemilang2.jpeg" alt="ramadhan" class="img-fluid rounded-4 shadow-lg">
-                </div>
-                <div class="col-md-9 mt-md-5">
-                    <div class="ms-md-4 pt-md-5">
-                        <div class=" text-md-start text-center">
-                            <h1><b>Dewa</b> gemilang wicaksana putra prayitno</h1>
-                            <h5 class="text-secondary">
-                                <b>Software Engineer</b> at
-                                <a href="https://poliwangi.ac.id/" class="text-decoration-none text-primary-emphasis" target="_blank">Politeknik Negeri Banyuwangi</a>
-                            </h5>
-                        </div>
+            <div class="row align-items-center">
+                <div class="col-md-6" data-aos="fade-right">
+                    <h1 class="display-4 fw-bold mb-3">Dewa Gemilang</h1>
+                    <h3 class="fw-light mb-4">Software Engineer</h3>
+                    <p class="lead mb-4">Passionate about creating innovative solutions through code. Currently studying at Politeknik Negeri Banyuwangi.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#contact" class="btn btn-light btn-lg px-4">Contact Me</a>
+                        <a href="https://drive.google.com/file/d/1WUm-JXrQpkk-Oe1KQnU0J4kZWqG2yWrl/view?usp=sharing" class="btn btn-outline-light btn-lg px-4" target="_blank">Download CV</a>
                     </div>
+                </div>
+                <div class="col-md-6 text-center" data-aos="fade-left">
+                    <img src="index/images/dewa gemilang2.jpeg" alt="Dewa Gemilang" class="img-fluid rounded-circle profile-img" style="width: 300px; height: 300px; object-fit: cover;">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="pendidikan" class="pt-5">
-        <div class="container pt-5">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="row">
-                        <h3 class="mb-3">Riwayat Pendidikan</h3>
-                        
-                        <div class="col-md-12 mb-3">
-                            <div class="card shadow-sm border-0 rounded-4">
-                                <div class="card-body">
-                                    <span class="badge bg-primary">2020 - 2023</span>
-                                    <h5 class="mt-2 mb-0">SMK Negeri Darul Ulum</h5>
-                                    <p class="text-body-tertiary mb-0">Teknologi Komputer dan Jaringan | Nilai. 91.39</p>
-                                    <div class="mt-2">
-                                        <p class="mb-1">Mata Pelajaran yang saya ikuti : </p>
-                                        <span class="badge text-bg-light">Teknologi Layanan Jaringan(TLJ)</span>
-                                        <span class="badge text-bg-light">Administrasi Infrastruktur Jaringan(AIJ)</span>
-                                        <span class="badge text-bg-light">Administrasi Sistem Jaringan(ASJ)</span>
-                                        <span class="badge text-bg-light">Teknologi Jaringan Berbasis Luas(WAN)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-12 mb-3">
-                            <div class="card shadow-sm border-0 rounded-4">
-                                <div class="card-body">
-                                    <span class="badge bg-primary">2023 - sekarang</span>
-                                    <h5 class="mt-2 mb-0">Politeknik Negeri Banyuwangi</h5>
-                                    <p class="text-body-tertiary mb-0">Teknik  Bisnis dan Informatika | IPK. 3.9 amin</p>
-
-                                    <div class="mt-2">
-                                        <p class="mb-1">Mata Kuliah yang saya ikuti : </p>
-                                        <span class="badge text-bg-light">Web Pemrogaman </span>
-                                        <span class="badge text-bg-light">Basis Data</span>
-                                        <span class="badge text-bg-light">Algoritma Struktur Data</span>
-                                        <span class="badge text-bg-light">Pemrogaman Berorientasi Objek</span>
-                                        <span class="badge text-bg-light">Bahasa Inggris</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-6 mt-5 mt-md-0">
-                    <div class="row">
-                        <h3 class="mb-3">Pengalaman</h3>
-                        <!-- Contoh: Pengalaman Kerja, Pengalaman Sukarelawan, Magang, Organisasi, dll. -->
-
-                        <div class="col-md-12 mb-3">
-                            <div class="card shadow-sm border-0 rounded-4">
-                                <div class="card-body">
-                                    <span class="badge bg-secondary">2021 - 2022</span>
-                                    <h5 class="mt-2 mb-0"><b>CV.Keppo Computer</b></h5>
-                                    <p class="text-body-tertiary mb-0">Magang</p>
-                                    <hr class="mt-2 mb-3 text-body-tertiary">
-
-                                    <div class="mt-2">
-                                        <ul class="mb-0">
-                                            <li>Melakukan servise laptop dan computer</li>
-                                            <li>Melakukan pemasangan wifi dan membuat layanan wifi dengan mikrotik dan access point</li>
-                                            <li>Melakukan pemasangan cctv</li>
-                                            <li>Melakukan Instal ulang windows dan penginstalan software lainnya</li>
-                                            <li>Bekerjasama dengan Tim untuk mencari data</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <div class="card shadow-sm border-0 rounded-4">
-                                <div class="card-body">
-                                    <span class="badge bg-secondary">2023 - Sekarang</span>
-                                    <h5 class="mt-2 mb-0"><b>Himpunan Mahasiswa Jurusan Bisnis Dan Informatika di Politeknik Negeri Banyuwangi</b></h5>
-                                    <p class="text-body-tertiary mb-0">Departemen PSDM Biro Kaderisasi</p>
-                                    <hr class="mt-2 mb-3 text-body-tertiary">
-
-                                    <div class="mt-2">
-                                        <p class="mb-0">Memberikan pengayoman dan solusi terhadap mahasiswa JBI yang butuh motivasi </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- KEAHLIAN DAN KURSUS -->
-    <section class="my-5 py-5 bg-white" id="keahlian">
+    <!-- Education Section -->
+    <section class="py-5" id="education">
         <div class="container">
+            <h2 class="section-title">Education</h2>
             <div class="row">
-                <div class="col-md-6">
-                    <h3 class="mb-3">Keahlian</h3>
-                    <!-- Keahlian atau skill yang kamu bisa atau kuasai -->
-
-                    <a class="btn btn-primary text-bg-light text-start mb-2 me-1">
-                        Web Development (HTML, CSS, PHP, Dart)
-                    </a>
-                    <a class="btn btn-primary text-bg-light text-start mb-2 me-1">
-                        Design UI di Figma
-                    </a>
-                    <a class="btn btn-primary text-bg-light text-start mb-2 me-1">
-                        Setting Mikrotik dan Access point
-                    </a>
-                    <a class="btn btn-primary text-bg-light text-start mb-2 me-1">
-                        Instal windows dan software computer
-                    </a>
-                    <a class="btn btn-primary text-bg-light text-start mb-2 me-1">
-                        Microsoft Office (Word, Excel, Powerpoint)
-                    </a>
-                </div>
-                <div class="col-md-6 mt-5 mt-md-0">
-                    <div class="row">
-                        <h3 class="mb-3">Kursus | Webinar | Seminar</h3>
-                        <div class="col-md-12 mb-3">
-                            <div class="card shadow-sm border-0 rounded-4">
-                                <div class="card-body">
-                                    <h6 class="mt-0 mb-0">Management Training K3</h6>
-                                    <p class="text-body-tertiary mb-0">Dentech corporation</p>
-                                </div>
+                <div class="col-md-6 mb-4" data-aos="fade-up">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="card-title mb-0">Politeknik Negeri Banyuwangi</h5>
+                                <span class="badge bg-primary">2023 - Present</span>
+                            </div>
+                            <p class="text-muted">Jurusan Bisnis dan Informatika | GPA: 3.9</p>
+                            <div class="mt-3">
+                                <span class="skill-badge">Web Programming</span>
+                                <span class="skill-badge">Database</span>
+                                <span class="skill-badge">Data Structures</span>
+                                <span class="skill-badge">OOP</span>
                             </div>
                         </div>
-                </div>
-
-                <div class="col-md-12 mt-5 mt-md-3">
-                    <h3 class="mb-3">Ketertarikan</h3>
-                    <!-- Ketertarikan terkait industri yang kamu tuju seperti profesi, bidang, atau yang lain -->
-
-                    <a class="btn btn-success text-bg-light text-start mb-2 me-1">
-                        Software Development
-                    </a>
-                    <a class="btn btn-success text-bg-light text-start mb-2 me-1">
-                        Data Analyst
-                    </a>
-                    <a class="btn btn-success text-bg-light text-start mb-2 me-1">
-                        UI/UX Design
-                    </a>
-                    <a class="btn btn-success text-bg-light text-start mb-2 me-1">
-                        Startup Bussiness
-                    </a>
-                    <a class="btn btn-success text-bg-light text-start mb-2 me-1">
-                        Leadership
-                    </a>
-                    <a class="btn btn-success text-bg-light text-start mb-2 me-1">
-                        Teaching
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END OF KEAHLIAN DAN KURSUS -->
-
-    <section id="kontak">
-        <div class="container py-md-5">
-            <div class="row">
-                <div class="col-md-7 pt-5 text-md-start text-center">
-                    <h1><b>Tertarik dengan Saya?</b></h1>
-                    <p>Hubungi saya jika ada hal yang perlu didiskusikan lebih lanjut</p>
-
-                    <div class="mb-3">
-                        <a class="btn btn-primary me-1" data-bs-toggle="modal" data-bs-target="#modalKontak">
-                            <b>Hubungi Saya</b>
-                        </a>
-                        <a href="https://drive.google.com/file/d/1xhi9hj9lf5V6n9zT3HYqGhyKlmMkpgKj/view?usp=sharing"
-                            class="btn btn-outline-primary" target="_blank">
-                            <b>Download CV</b>
-                        </a>
                     </div>
                 </div>
-                <div class="col-md-5 text-start">
-                    <!-- Ilustrasi lainnya, cek di https://storyset.com/ (Gratis!) -->
-                    <img src="assets/images/ilustrasi-kontak.svg" alt="Ilustrasi" class="img-fluid">
+                <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="card-title mb-0">SMK Negeri Darul Ulum</h5>
+                                <span class="badge bg-primary">2020 - 2023</span>
+                            </div>
+                            <p class="text-muted">Computer and Network Technology | Score: 91.39</p>
+                            <div class="mt-3">
+                                <span class="skill-badge">Network Services</span>
+                                <span class="skill-badge">Network Infrastructure</span>
+                                <span class="skill-badge">System Administration</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-dark py-3">
+    <!-- Experience Section -->
+    <section class="py-5 bg-light" id="experience">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p class="text-white mb-0">Copyright &copy; 2024 - <b>Dewa gemilang wicaksana putra paryitno</b> </p>
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-up">
+                    <h5 class="mb-1">CV. Keppo Computer</h5>
+                    <p class="text-muted mb-2">Internship | 2021 - 2022</p>
+                    <ul class="mb-0">
+                        <li>Performed laptop and computer servicing</li>
+                        <li>Installed and configured WiFi networks using Mikrotik and access points</li>
+                        <li>Conducted CCTV installations</li>
+                        <li>Managed Windows installations and software deployments</li>
+                    </ul>
+                </div>
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                    <h5 class="mb-1">Student Association of Business and Informatics</h5>
+                    <p class="text-muted mb-2">PSDM Department | 2023 - Present</p>
+                    <p>Providing guidance and solutions for JBI students who need motivation and support</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-5" id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Interests</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4" data-aos="fade-up">
+                    <h4 class="mb-3">Technical Skills</h4>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="skill-badge">HTML</span>
+                        <span class="skill-badge">CSS</span>
+                        <span class="skill-badge">PHP</span>
+                        <span class="skill-badge">Dart</span>
+                        <span class="skill-badge">UI Design (Figma)</span>
+                        <span class="skill-badge">Mikrotik</span>
+                        <span class="skill-badge">Windows Administration</span>
+                        <span class="skill-badge">Microsoft Office</span>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <h4 class="mb-3">Interests</h4>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="skill-badge">Software Development</span>
+                        <span class="skill-badge">Data Analysis</span>
+                        <span class="skill-badge">UI/UX Design</span>
+                        <span class="skill-badge">Startup Business</span>
+                        <span class="skill-badge">Leadership</span>
+                        <span class="skill-badge">Teaching</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-5 bg-light" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up">
+                    <div class="card contact-card shadow-sm h-100 p-4">
+                        <h4 class="fw-bold mb-3">Contact Information</h4>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-3">
+                                <i class="bi bi-envelope me-2 text-primary"></i>
+                                <span>dewa.gemilang@example.com</span>
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-phone me-2 text-primary"></i>
+                                <span>+62 812 3456 7890</span>
+                            </li>
+                            <li>
+                                <i class="bi bi-geo-alt me-2 text-primary"></i>
+                                <span>Banyuwangi, Indonesia</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card contact-card shadow-sm h-100 p-4">
+                        <h4 class="fw-bold mb-3">Send Me a Message</h4>
+                        <form action="https://formsubmit.co/dewa.gemilang@example.com" method="POST">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white text-center">
+        <div class="container">
+            <p class="mb-0">© 2025 Dewa Gemilang. All rights reserved.</p>
+            <p class="small">Built with ❤️ and Bootstrap</p>
         </div>
     </footer>
-    <!-- END OF FOOTER -->
 
-    <!-- NOTE!
-    LEBIH BAIK JIKA ADA : 
-    - Kamu bisa tambahkan Portofolio terkait project atau hal yang telah kamu buat -->
-
-    <!-- MODAL KONTAK -->
-    <div class="modal fade" id="modalKontak" tabindex="-1" aria-labelledby="modalKontakLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalKontakLabel">Hubungi Saya</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="card bg-light border-success-subtle mb-3 rounded-4">
-                        <div class="card-body">
-                            <h5 class="mb-0">No. HP / Whatsapp</h5>
-                            <p class="mb-0">
-                                <b>+62 821-3165-5241</b>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card bg-light border-primary-subtle mb-3 rounded-4">
-                        <div class="card-body">
-                            <h5 class="mb-0">Linkedin</h5>
-                            <p class="mb-0">
-                                <a href="https://www.linkedin.com/in/dewa-gemilang-33486a30a/" target="_blank">
-                                    linkedin.com/in/<b>dewa-gemilang</b>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card bg-light border-dark mb-3 rounded-4">
-                        <div class="card-body">
-                            <h5 class="mb-0">Email</h5>
-                            <p class="mb-0">
-                                <b>tammyrien90@gmail.com</b>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card bg-light border-danger-subtle mb-3 rounded-4">
-                        <div class="card-body">
-                            <h5 class="mb-0">Instagram</h5>
-                            <p class="mb-0">
-                                <b><a href="https://www.instagram.com/de.wa_gemilang/">@de.wa_gemilang</a></b>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-
-    <!-- Kode Javascript agar menu pada navbar otomatis tertutup jika di klik -->
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var navbarNav = document.getElementById('navbarSupportedContent');
-            var navLinks = navbarNav.querySelectorAll('.nav-link');
-            var bsCollapse = new bootstrap.Collapse(navbarNav, {
-                toggle: false
-            });
-
-            navLinks.forEach(function (link) {
-                link.addEventListener('click', function () {
-                    if (navbarNav.classList.contains('show')) {
-                        bsCollapse.hide();
-                    }
-                });
-            });
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
         });
     </script>
 </body>
-
 </html>
