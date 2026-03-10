@@ -1,0 +1,1842 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dewa Gemilang - Software Engineer</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --navy: #0a1628;
+        --navy-mid: #112240;
+        --navy-light: #1a3a6b;
+        --accent: #2563eb;
+        --accent-bright: #3b82f6;
+        --gold: #f59e0b;
+        --white: #ffffff;
+        --light-bg: #f0f4ff;
+        --text-muted-navy: #94a3b8;
+      }
+
+      * {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background-color: var(--white);
+        color: #1e293b;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: "Playfair Display", serif;
+      }
+
+      .navbar {
+        background-color: rgba(10, 22, 40, 0.97) !important;
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(37, 99, 235, 0.3);
+        padding: 14px 0;
+        transition: all 0.3s;
+      }
+      .navbar-brand {
+        font-family: "Playfair Display", serif;
+        font-size: 1.6rem;
+        font-weight: 900;
+        color: var(--white) !important;
+        letter-spacing: 1px;
+      }
+      .navbar-brand span {
+        color: var(--accent-bright);
+      }
+      .navbar .nav-link {
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-weight: 500;
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+        padding: 8px 16px !important;
+        border-radius: 6px;
+        transition: all 0.3s;
+      }
+      .navbar .nav-link:hover {
+        color: var(--white) !important;
+        background: rgba(59, 130, 246, 0.2);
+      }
+      .navbar-toggler {
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      .hero-section {
+        background: linear-gradient(
+          145deg,
+          var(--navy) 0%,
+          var(--navy-mid) 50%,
+          #0d2748 100%
+        );
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 120px 0 80px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: -200px;
+        right: -200px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(37, 99, 235, 0.15) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+      }
+      .hero-section::after {
+        content: "";
+        position: absolute;
+        bottom: -100px;
+        left: -100px;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(37, 99, 235, 0.1) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+      }
+      .hero-tag {
+        display: inline-block;
+        background: rgba(59, 130, 246, 0.15);
+        border: 1px solid rgba(59, 130, 246, 0.4);
+        color: var(--accent-bright);
+        padding: 6px 18px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+      }
+      .hero-name {
+        font-size: clamp(2.8rem, 6vw, 4.5rem);
+        font-weight: 900;
+        color: var(--white);
+        line-height: 1.1;
+        margin-bottom: 8px;
+      }
+      .hero-name span {
+        color: var(--accent-bright);
+      }
+      .hero-role {
+        font-family: "DM Sans", sans-serif;
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        color: var(--text-muted-navy);
+        font-weight: 400;
+        margin-bottom: 24px;
+      }
+      .hero-desc {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1rem;
+        line-height: 1.8;
+        max-width: 480px;
+        margin-bottom: 36px;
+      }
+      .hero-stats {
+        display: flex;
+        gap: 32px;
+        margin-bottom: 36px;
+      }
+      .hero-stat-num {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--accent-bright);
+        display: block;
+      }
+      .hero-stat-label {
+        font-size: 0.78rem;
+        color: var(--text-muted-navy);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .btn-navy-primary {
+        background: var(--accent);
+        border: 2px solid var(--accent);
+        color: var(--white);
+        padding: 12px 32px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s;
+      }
+      .btn-navy-primary:hover {
+        background: var(--accent-bright);
+        border-color: var(--accent-bright);
+        color: var(--white);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+      }
+      .btn-navy-outline {
+        background: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: var(--white);
+        padding: 12px 32px;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: all 0.3s;
+      }
+      .btn-navy-outline:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.6);
+        color: var(--white);
+      }
+      .profile-wrapper {
+        position: relative;
+        display: inline-block;
+      }
+      .profile-ring {
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        border: 2px solid rgba(59, 130, 246, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .profile-ring::before {
+        content: "";
+        position: absolute;
+        inset: -8px;
+        border-radius: 50%;
+        border: 1px dashed rgba(59, 130, 246, 0.25);
+        animation: spin 20s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .profile-img {
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid rgba(37, 99, 235, 0.5);
+        box-shadow:
+          0 20px 60px rgba(0, 0, 0, 0.4),
+          0 0 40px rgba(37, 99, 235, 0.2);
+      }
+      .profile-badge {
+        position: absolute;
+        bottom: 16px;
+        right: -10px;
+        background: var(--navy-mid);
+        border: 1px solid rgba(59, 130, 246, 0.4);
+        border-radius: 12px;
+        padding: 10px 16px;
+        text-align: center;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      }
+      .profile-badge-num {
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--accent-bright);
+        display: block;
+      }
+      .profile-badge-text {
+        font-size: 0.72rem;
+        color: var(--text-muted-navy);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* ===== SECTION COMMONS ===== */
+      .section-light {
+        background: var(--white);
+        padding: 90px 0;
+      }
+      .section-dark {
+        background: var(--light-bg);
+        padding: 90px 0;
+      }
+      .section-navy {
+        background: var(--navy-mid);
+        padding: 90px 0;
+      }
+
+      .section-eyebrow {
+        display: inline-block;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--accent);
+        margin-bottom: 12px;
+      }
+      .section-heading {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+      .section-heading-white {
+        color: var(--white) !important;
+      }
+      .section-divider {
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+        border-radius: 2px;
+        margin-bottom: 48px;
+      }
+
+      .edu-card {
+        background: var(--white);
+        border-radius: 16px;
+        border: 1px solid #e2e8f0;
+        padding: 28px;
+        height: 100%;
+        transition: all 0.35s;
+        position: relative;
+        overflow: hidden;
+      }
+      .edu-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          var(--accent),
+          var(--accent-bright)
+        );
+      }
+      .edu-card:hover {
+        border-color: rgba(37, 99, 235, 0.3);
+        box-shadow: 0 12px 40px rgba(37, 99, 235, 0.12);
+        transform: translateY(-4px);
+      }
+      .edu-icon {
+        width: 52px;
+        height: 52px;
+        background: linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent-bright)
+        );
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        color: white;
+        margin-bottom: 16px;
+      }
+      .edu-year-badge {
+        background: rgba(37, 99, 235, 0.08);
+        color: var(--accent);
+        border: 1px solid rgba(37, 99, 235, 0.2);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      .skill-chip {
+        display: inline-block;
+        background: var(--light-bg);
+        color: var(--navy-light);
+        border: 1px solid rgba(37, 99, 235, 0.15);
+        padding: 4px 14px;
+        border-radius: 20px;
+        font-size: 0.78rem;
+        font-weight: 500;
+        margin: 3px 2px;
+        transition: all 0.2s;
+      }
+      .skill-chip:hover {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+      }
+
+      .exp-tabs-wrapper .nav-pills {
+        background: var(--navy-mid);
+        padding: 6px;
+        border-radius: 12px;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+      .exp-tabs-wrapper .nav-pills .nav-link {
+        color: rgba(255, 255, 255, 0.6);
+        border-radius: 8px;
+        padding: 9px 18px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: all 0.3s;
+        border: none;
+      }
+      .exp-tabs-wrapper .nav-pills .nav-link.active {
+        background: var(--accent);
+        color: white;
+      }
+      .exp-tabs-wrapper .nav-pills .nav-link:hover:not(.active) {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+      }
+
+      /* Timeline */
+      .timeline-wrap {
+        position: relative;
+        padding-left: 28px;
+      }
+      .timeline-wrap::before {
+        content: "";
+        position: absolute;
+        left: 7px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(
+          to bottom,
+          var(--accent),
+          rgba(37, 99, 235, 0.1)
+        );
+      }
+      .timeline-card {
+        position: relative;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        padding: 22px 24px;
+        margin-bottom: 20px;
+        transition: all 0.3s;
+      }
+      .timeline-card:hover {
+        background: rgba(37, 99, 235, 0.08);
+        border-color: rgba(37, 99, 235, 0.4);
+        transform: translateX(4px);
+      }
+      .timeline-dot {
+        position: absolute;
+        left: -33px;
+        top: 24px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--accent);
+        border: 3px solid var(--navy-mid);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+      }
+      .exp-type-badge {
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 3px 12px;
+        border-radius: 20px;
+        letter-spacing: 0.5px;
+      }
+      .badge-magang {
+        background: rgba(245, 158, 11, 0.15);
+        color: #f59e0b;
+        border: 1px solid rgba(245, 158, 11, 0.3);
+      }
+      .badge-org {
+        background: rgba(16, 185, 129, 0.15);
+        color: #10b981;
+        border: 1px solid rgba(16, 185, 129, 0.3);
+      }
+      .badge-panitia {
+        background: rgba(139, 92, 246, 0.15);
+        color: #8b5cf6;
+        border: 1px solid rgba(139, 92, 246, 0.3);
+      }
+      .badge-volunteer {
+        background: rgba(236, 72, 153, 0.15);
+        color: #ec4899;
+        border: 1px solid rgba(236, 72, 153, 0.3);
+      }
+      .badge-school {
+        background: rgba(59, 130, 246, 0.15);
+        color: #3b82f6;
+        border: 1px solid rgba(59, 130, 246, 0.3);
+      }
+
+      .exp-title {
+        color: var(--white);
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .exp-sub {
+        color: var(--text-muted-navy);
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+      }
+      .exp-period {
+        font-size: 0.78rem;
+        color: var(--accent-bright);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-bottom: 12px;
+      }
+      .exp-list {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.88rem;
+        padding-left: 16px;
+        margin-bottom: 0;
+        line-height: 1.8;
+      }
+      .sub-section-label {
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--accent-bright);
+        margin-bottom: 14px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid rgba(37, 99, 235, 0.2);
+      }
+
+      .skill-category-card {
+        background: var(--white);
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 28px;
+        height: 100%;
+        transition: all 0.3s;
+      }
+      .skill-category-card:hover {
+        border-color: rgba(37, 99, 235, 0.3);
+        box-shadow: 0 8px 30px rgba(37, 99, 235, 0.1);
+      }
+      .skill-icon-wrap {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        margin-bottom: 16px;
+      }
+      .skill-icon-blue {
+        background: rgba(37, 99, 235, 0.1);
+        color: var(--accent);
+      }
+      .skill-icon-green {
+        background: rgba(16, 185, 129, 0.1);
+        color: #10b981;
+      }
+      .skill-icon-amber {
+        background: rgba(245, 158, 11, 0.1);
+        color: #f59e0b;
+      }
+
+      .skill-pill {
+        display: inline-block;
+        background: var(--light-bg);
+        color: var(--navy-light);
+        border: 1px solid rgba(37, 99, 235, 0.15);
+        padding: 6px 16px;
+        border-radius: 50px;
+        font-size: 0.82rem;
+        font-weight: 500;
+        margin: 4px 3px;
+        transition: all 0.25s;
+        cursor: default;
+      }
+      .skill-pill:hover {
+        background: var(--navy-mid);
+        color: white;
+        border-color: var(--navy-mid);
+        transform: translateY(-2px);
+      }
+      .interest-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--navy-mid);
+        color: rgba(255, 255, 255, 0.85);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        padding: 7px 16px;
+        border-radius: 50px;
+        font-size: 0.83rem;
+        font-weight: 500;
+        margin: 4px 3px;
+        transition: all 0.25s;
+      }
+      .interest-pill:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+        transform: translateY(-2px);
+      }
+
+      .contact-info-card {
+        background: var(--navy-mid);
+        border-radius: 20px;
+        padding: 36px;
+        height: 100%;
+        border: 1px solid rgba(59, 130, 246, 0.2);
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .contact-item:last-child {
+        border-bottom: none;
+      }
+      .contact-item:hover {
+        padding-left: 6px;
+      }
+      .contact-item-icon {
+        width: 42px;
+        height: 42px;
+        background: rgba(37, 99, 235, 0.15);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        color: var(--accent-bright);
+        flex-shrink: 0;
+        transition: all 0.2s;
+      }
+      .contact-item:hover .contact-item-icon {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: white;
+      }
+      .contact-item-text {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+      }
+      .contact-item-label {
+        color: var(--text-muted-navy);
+        font-size: 0.75rem;
+        margin-bottom: 1px;
+      }
+
+      .contact-form-card {
+        background: var(--white);
+        border-radius: 20px;
+        padding: 36px;
+        height: 100%;
+        border: 1px solid #e2e8f0;
+      }
+      .form-control,
+      .form-label {
+        font-family: "DM Sans", sans-serif;
+      }
+      .form-control {
+        border-radius: 10px;
+        border: 1.5px solid #e2e8f0;
+        padding: 12px 16px;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+      }
+      .form-control:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+      .form-label {
+        color: #475569;
+        font-weight: 500;
+        font-size: 0.88rem;
+      }
+
+      .footer-main {
+        background: var(--navy);
+        border-top: 1px solid rgba(59, 130, 246, 0.2);
+        padding: 48px 0 24px;
+      }
+      .footer-brand {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: white;
+      }
+      .footer-brand span {
+        color: var(--accent-bright);
+      }
+      .footer-desc {
+        color: var(--text-muted-navy);
+        font-size: 0.88rem;
+        max-width: 280px;
+      }
+      .footer-link {
+        color: rgba(255, 255, 255, 0.55);
+        text-decoration: none;
+        font-size: 0.88rem;
+        transition: color 0.2s;
+        display: block;
+        padding: 3px 0;
+      }
+      .footer-link:hover {
+        color: var(--accent-bright);
+      }
+      .footer-social-btn {
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 1rem;
+        text-decoration: none;
+        transition: all 0.2s;
+        margin-right: 8px;
+      }
+      .footer-social-btn:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: white;
+        transform: translateY(-2px);
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        margin-top: 36px;
+        padding-top: 20px;
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 0.82rem;
+      }
+
+      #scrollTop {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        width: 44px;
+        height: 44px;
+        background: var(--accent);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.1rem;
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s;
+        z-index: 999;
+        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+        border: none;
+      }
+      #scrollTop.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      #scrollTop:hover {
+        background: var(--navy-mid);
+      }
+
+      @media (max-width: 767px) {
+        .hero-stats {
+          gap: 20px;
+        }
+        .profile-ring {
+          width: 240px;
+          height: 240px;
+        }
+        .profile-img {
+          width: 210px;
+          height: 210px;
+        }
+        .profile-badge {
+          right: -5px;
+        }
+        .exp-tabs-wrapper .nav-pills .nav-link {
+          padding: 7px 12px;
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#home"><span>D</span>G</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center gap-1">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#education">Pendidikan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#experience">Pengalaman</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Keahlian</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Kontak</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero-section" id="home">
+      <div class="container position-relative">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
+            <span class="hero-tag"
+              ><i class="bi bi-stars me-1"></i> Available for
+              Opportunities</span
+            >
+            <h1 class="hero-name">Dewa<br /><span>Gemilang</span></h1>
+            <p class="hero-role">
+              Software Engineer &nbsp;·&nbsp; Web Development &nbsp;·&nbsp;
+              System Analyst
+            </p>
+            <p class="hero-desc">
+              Mahasiswa Politeknik Negeri Banyuwangi yang terdapat pada Program
+              Studi Teknologi Rekayasa Perangkat Lunak yang memiliki minat
+              dibidang software engineer, teknologi, dan bisnis. Berpengalaman
+              mengembangkan website penjualan akun premium (cakstore) dengan
+              menggunakan framework laravel pada Project Based Learning(PBL).
+              Terbiasa membuat database, membuat website dengan framework
+              laravel, memimpin, berkomunikasi, berkolaborasi, bekerja sama, dan
+              memanajemen dalam suatu proyek yang dikerjakan. Siap belajar,
+              bekerja sama, dan berkolaborasi sebagai mahasiswa magang di
+              perusahaan software house. Pembuatan sistem informasi penjualan
+              akun premium.
+            </p>
+            <div class="hero-stats">
+              <div>
+                <span class="hero-stat-num">3+</span>
+                <span class="hero-stat-label">Tahun<br />Pengalaman</span>
+              </div>
+              <div>
+                <span class="hero-stat-num">10+</span>
+                <span class="hero-stat-label">Proyek &<br />Kepanitiaan</span>
+              </div>
+              <div>
+                <span class="hero-stat-num">91</span>
+                <span class="hero-stat-label">Nilai Rata-rata<br />SMK</span>
+              </div>
+            </div>
+            <div class="d-flex gap-3 flex-wrap">
+              <a href="#contact" class="btn btn-navy-primary">
+                <i class="bi bi-envelope me-2"></i>Hubungi Saya
+              </a>
+              <a
+                href="https://drive.google.com/drive/folders/1m1kQsffbd5zp0TcVZOMcBU6SpzYdcKp7?usp=sharing"
+                class="btn btn-navy-outline"
+                target="_blank"
+              >
+                <i class="bi bi-download me-2"></i>Download CV
+              </a>
+            </div>
+          </div>
+          <div
+            class="col-lg-6 text-center"
+            data-aos="fade-left"
+            data-aos-duration="800"
+          >
+            <div class="profile-wrapper d-inline-block">
+              <div class="profile-ring mx-auto">
+                <img
+                  src="assets/images/dewa gemilang.jpg"
+                  alt="Dewa Gemilang"
+                  class="profile-img"
+                />
+              </div>
+              <div class="profile-badge">
+                <span class="profile-badge-num"
+                  ><i
+                    class="bi bi-star-fill"
+                    style="font-size: 1rem; color: #f59e0b"
+                  ></i
+                ></span>
+                <span class="profile-badge-text"
+                  >Politeknik<br />Negeri BWI</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-light" id="education">
+      <div class="container">
+        <div data-aos="fade-up">
+          <span class="section-eyebrow"
+            ><i class="bi bi-mortarboard me-1"></i>Riwayat Akademik</span
+          >
+          <h2 class="section-heading">Pendidikan</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="edu-card">
+              <div
+                class="d-flex justify-content-between align-items-start mb-3"
+              >
+                <div class="edu-icon"><i class="bi bi-building"></i></div>
+                <span class="edu-year-badge">2023 – Sekarang</span>
+              </div>
+              <h5 class="mb-1" style="color: var(--navy)">
+                Politeknik Negeri Banyuwangi
+              </h5>
+              <p class="text-muted mb-3" style="font-size: 0.88rem">
+                D4 Teknologi Rekayasa Perangkat Lunak
+              </p>
+              <div>
+                <span class="skill-chip">Software Engineering</span>
+                <span class="skill-chip">Mobile Development</span>
+                <span class="skill-chip">Database</span>
+                <span class="skill-chip">Web Development</span>
+                <span class="skill-chip">System Analyst</span>
+                <span class="skill-chip">Quality Assurance</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="edu-card">
+              <div
+                class="d-flex justify-content-between align-items-start mb-3"
+              >
+                <div class="edu-icon"><i class="bi bi-laptop"></i></div>
+                <span class="edu-year-badge">2020 – 2023</span>
+              </div>
+              <h5 class="mb-1" style="color: var(--navy)">
+                SMK Negeri Darul Ulum Muncar
+              </h5>
+              <p class="text-muted mb-1" style="font-size: 0.88rem">
+                Teknik Komputer dan Jaringan
+              </p>
+              <p
+                class="mb-3"
+                style="
+                  font-size: 0.84rem;
+                  color: var(--accent);
+                  font-weight: 600;
+                "
+              >
+                Nilai Kelulusan: 91.39
+              </p>
+              <div>
+                <span class="skill-chip">Network Services</span>
+                <span class="skill-chip">Network Infrastructure</span>
+                <span class="skill-chip">System Administration</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-navy" id="experience">
+      <div class="container">
+        <div data-aos="fade-up">
+          <span class="section-eyebrow"
+            ><i class="bi bi-briefcase me-1"></i>Perjalanan Karier &
+            Organisasi</span
+          >
+          <h2 class="section-heading section-heading-white">Pengalaman</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="exp-tabs-wrapper mb-5" data-aos="fade-up">
+          <ul class="nav nav-pills" id="expTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="tab-sekolah"
+                data-bs-toggle="pill"
+                data-bs-target="#exp-sekolah"
+                type="button"
+              >
+                <i class="bi bi-mortarboard me-1"></i>Pendidikan
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="tab-magang"
+                data-bs-toggle="pill"
+                data-bs-target="#exp-magang"
+                type="button"
+              >
+                <i class="bi bi-building-check me-1"></i>Magang & Kerja
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="tab-org"
+                data-bs-toggle="pill"
+                data-bs-target="#exp-org"
+                type="button"
+              >
+                <i class="bi bi-people me-1"></i>Organisasi
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="tab-panitia"
+                data-bs-toggle="pill"
+                data-bs-target="#exp-panitia"
+                type="button"
+              >
+                <i class="bi bi-calendar-event me-1"></i>Kepanitiaan
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="tab-volunteer"
+                data-bs-toggle="pill"
+                data-bs-target="#exp-volunteer"
+                type="button"
+              >
+                <i class="bi bi-heart me-1"></i>Volunteer
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="tab-content" id="expTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="exp-sekolah"
+            role="tabpanel"
+          >
+            <div class="row g-4">
+              <div class="col-12" data-aos="fade-up">
+                <p class="sub-section-label">
+                  <i class="bi bi-mortarboard me-2"></i>Riwayat Pendidikan &
+                  Prestasi
+                </p>
+                <div class="timeline-wrap">
+                  <div class="timeline-card position-relative">
+                    <span class="timeline-dot"></span>
+                    <div
+                      class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2"
+                    >
+                      <h6 class="exp-title mb-0">
+                        Politeknik Negeri Banyuwangi
+                      </h6>
+                      <span class="exp-type-badge badge-school">D4 Aktif</span>
+                    </div>
+                    <p class="exp-sub">D4 Teknologi Rekayasa Perangkat Lunak</p>
+                    <p class="exp-period">
+                      <i class="bi bi-calendar3"></i>2023 – Sekarang
+                    </p>
+                    <ul class="exp-list">
+                      <li>
+                        Mempelajari pengembangan perangkat lunak berbasis web
+                        dan mobile
+                      </li>
+                      <li>Aktif dalam kegiatan himpunan mahasiswa jurusan</li>
+                      <li>
+                        Mengembangkan proyek-proyek IT untuk kebutuhan kampus
+                        dan masyarakat
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="timeline-card position-relative">
+                    <span class="timeline-dot"></span>
+                    <div
+                      class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2"
+                    >
+                      <h6 class="exp-title mb-0">SMK Negeri Darul Ulum</h6>
+                      <span class="exp-type-badge badge-school">Lulus</span>
+                    </div>
+                    <p class="exp-sub">Teknik Komputer dan Jaringan (TKJ)</p>
+                    <p class="exp-period">
+                      <i class="bi bi-calendar3"></i>2020 – 2023 &nbsp;|&nbsp;
+                      <i class="bi bi-award"></i> Nilai: 91.39
+                    </p>
+                    <ul class="exp-list">
+                      <li>
+                        Mempelajari konfigurasi jaringan, administrasi sistem,
+                        dan infrastruktur IT
+                      </li>
+                      <li>
+                        Praktik kerja industri di CV. Keppo Computer sebagai
+                        teknisi jaringan
+                      </li>
+                      <li>
+                        Lulus dengan nilai kelulusan 91.39 (kompetensi keahlian)
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="exp-magang" role="tabpanel">
+            <div data-aos="fade-up">
+              <p class="sub-section-label">
+                <i class="bi bi-building-check me-2"></i>Praktik Kerja Industri
+                & Magang
+              </p>
+              <div class="timeline-wrap">
+                <div class="timeline-card position-relative">
+                  <span class="timeline-dot"></span>
+                  <div
+                    class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2"
+                  >
+                    <h6 class="exp-title mb-0">CV. Keppo Computer</h6>
+                    <span class="exp-type-badge badge-magang"
+                      >Magang / PKL</span
+                    >
+                  </div>
+                  <p class="exp-sub">Teknisi Komputer & Jaringan</p>
+                  <p class="exp-period">
+                    <i class="bi bi-calendar3"></i>2021 – 2022 &nbsp;·&nbsp;
+                    Banyuwangi, Jawa Timur
+                  </p>
+                  <ul class="exp-list">
+                    <li>
+                      Melakukan servis laptop dan komputer pelanggan (hardware &
+                      software)
+                    </li>
+                    <li>
+                      Instalasi dan konfigurasi jaringan WiFi menggunakan
+                      Mikrotik dan access point
+                    </li>
+                    <li>Melakukan instalasi dan konfigurasi sistem CCTV</li>
+                    <li>
+                      Mengelola instalasi Windows dan pengaturan perangkat lunak
+                    </li>
+                    <li>Memberikan layanan konsultasi IT kepada pelanggan</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="exp-org" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-12" data-aos="fade-up">
+                <p class="sub-section-label">
+                  <i class="bi bi-globe me-2"></i>Organisasi Tingkat Kampus
+                </p>
+                <div class="timeline-wrap">
+                  <div class="timeline-card position-relative">
+                    <span class="timeline-dot"></span>
+                    <div
+                      class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2"
+                    >
+                      <h6 class="exp-title mb-0">
+                        Himpunan Mahasiswa Bisnis dan Informatika (HMJBI)
+                      </h6>
+                      <span class="exp-type-badge badge-org"
+                        >Himpunan Jurusan</span
+                      >
+                    </div>
+                    <p class="exp-sub">
+                      Departemen Pengembangan Sumber Daya Mahasiswa (PSDM)
+                    </p>
+                    <p class="exp-period">
+                      <i class="bi bi-calendar3"></i>2023 – Sekarang
+                    </p>
+                    <ul class="exp-list mb-3">
+                      <li>Anggota aktif Departemen PSDM HMJBI sejak 2023</li>
+                      <li>
+                        Terlibat dalam perencanaan dan pelaksanaan program
+                        pengembangan mahasiswa
+                      </li>
+                    </ul>
+                    <div class="mt-2">
+                      <span class="exp-type-badge badge-org">Anggota PSDM</span>
+                      &rarr;
+                      <span class="exp-type-badge badge-org ms-1"
+                        >Koordinator PSDM</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="exp-panitia" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-lg-6" data-aos="fade-up">
+                <p class="sub-section-label">
+                  <i class="bi bi-flag me-2"></i>Kepanitiaan Tingkat Nasional /
+                  Politeknik
+                </p>
+                <div class="timeline-wrap">
+                  <div class="timeline-card position-relative">
+                    <span class="timeline-dot"></span>
+                    <div class="d-flex flex-wrap gap-2 mb-2">
+                      <h6 class="exp-title mb-0">
+                        PKKMB 2024 Politeknik Negeri Banyuwangi
+                      </h6>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 mb-2">
+                      <span class="exp-type-badge badge-panitia"
+                        >Sie. Perkab</span
+                      >
+                      <span class="exp-type-badge badge-panitia"
+                        >Tingkat Politeknik</span
+                      >
+                    </div>
+                    <p class="exp-period">
+                      <i class="bi bi-calendar3"></i>2024
+                    </p>
+                    <p class="exp-sub mb-0">
+                      Pengenalan Kehidupan Kampus bagi Mahasiswa Baru tingkat
+                      Politeknik Negeri Banyuwangi.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <p class="sub-section-label">
+                  <i class="bi bi-building me-2"></i>Kepanitiaan Tingkat Kampus
+                  / Jurusan
+                </p>
+                <div class="timeline-wrap">
+                  <div class="timeline-card position-relative">
+                    <span class="timeline-dot"></span>
+                    <h6 class="exp-title">Pengenalan Kehidupan Jurusan</h6>
+                    <span class="exp-type-badge badge-panitia">Sie. Acara</span>
+                    <p class="exp-period mt-2">
+                      <i class="bi bi-calendar3"></i>2024
+                    </p>
+                    <p class="exp-sub mb-0">
+                      Pengenalan kehidupan jurusan bagi mahasiswa baru Bisnis
+                      dan Informatika.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12" data-aos="fade-up" data-aos-delay="150">
+                <p class="sub-section-label">
+                  <i class="bi bi-people me-2"></i>Kepanitiaan Tingkat Himpunan
+                </p>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="timeline-wrap">
+                      <div class="timeline-card position-relative">
+                        <span class="timeline-dot"></span>
+                        <h6 class="exp-title">Aplikasi Jurusan HMJTI 2023</h6>
+                        <span class="exp-type-badge badge-panitia"
+                          >Ketua Panitia</span
+                        >
+                        <p class="exp-period mt-2">
+                          <i class="bi bi-calendar3"></i>2023
+                        </p>
+                      </div>
+                      <div class="timeline-card position-relative">
+                        <span class="timeline-dot"></span>
+                        <h6 class="exp-title">Sidang AD/ART HMJBI</h6>
+                        <span class="exp-type-badge badge-panitia"
+                          >Sie. Perkab</span
+                        >
+                        <p class="exp-period mt-2">
+                          <i class="bi bi-calendar3"></i>2023
+                        </p>
+                      </div>
+                      <div class="timeline-card position-relative">
+                        <span class="timeline-dot"></span>
+                        <h6 class="exp-title">PMK HMJBI</h6>
+                        <span class="exp-type-badge badge-panitia"
+                          >Sie. Perkab</span
+                        >
+                        <p class="exp-period mt-2">
+                          <i class="bi bi-calendar3"></i>2023
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="timeline-wrap">
+                      <div class="timeline-card position-relative">
+                        <span class="timeline-dot"></span>
+                        <h6 class="exp-title">Creativest Besinfo HMJBI</h6>
+                        <span class="exp-type-badge badge-panitia"
+                          >Sie. Perkab</span
+                        >
+                        <p class="exp-period mt-2">
+                          <i class="bi bi-calendar3"></i>2024
+                        </p>
+                      </div>
+                      <div class="timeline-card position-relative">
+                        <span class="timeline-dot"></span>
+                        <h6 class="exp-title">Regenerasi HMJBI</h6>
+                        <span class="exp-type-badge badge-panitia"
+                          >Ketua Panitia</span
+                        >
+                        <p class="exp-period mt-2">
+                          <i class="bi bi-calendar3"></i>2024
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="exp-volunteer" role="tabpanel">
+            <div data-aos="fade-up">
+              <p class="sub-section-label">
+                <i class="bi bi-heart me-2"></i>Kegiatan Sosial & Sukarela
+              </p>
+              <div class="timeline-wrap">
+                <div class="timeline-card position-relative">
+                  <span class="timeline-dot"></span>
+                  <div
+                    class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2"
+                  >
+                    <h6 class="exp-title mb-0">Panitia PKKMB 2024</h6>
+                    <span class="exp-type-badge badge-volunteer">Sukarela</span>
+                  </div>
+                  <p class="exp-sub">
+                    Kontribusi dalam menyambut mahasiswa baru Politeknik Negeri
+                    Banyuwangi
+                  </p>
+                  <p class="exp-period"><i class="bi bi-calendar3"></i>2024</p>
+                  <ul class="exp-list">
+                    <li>
+                      Membantu pengelolaan perlengkapan dan kebutuhan acara
+                      sebagai Sie. Perkab
+                    </li>
+                    <li>
+                      Berkontribusi dalam menciptakan lingkungan kampus yang
+                      inklusif bagi mahasiswa baru
+                    </li>
+                  </ul>
+                </div>
+                <div class="timeline-card position-relative">
+                  <span class="timeline-dot"></span>
+                  <div
+                    class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2"
+                  >
+                    <h6 class="exp-title mb-0">Pendampingan Mahasiswa Baru</h6>
+                    <span class="exp-type-badge badge-volunteer"
+                      >Mentor Jurusan</span
+                    >
+                  </div>
+                  <p class="exp-sub">
+                    Pengenalan Kehidupan Jurusan Bisnis dan Informatika
+                  </p>
+                  <p class="exp-period"><i class="bi bi-calendar3"></i>2024</p>
+                  <ul class="exp-list">
+                    <li>
+                      Menjadi fasilitator Sie. Acara untuk mengenalkan kehidupan
+                      kampus jurusan
+                    </li>
+                    <li>
+                      Membantu mahasiswa baru beradaptasi dengan lingkungan
+                      akademik
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-light" id="skills">
+      <div class="container">
+        <div data-aos="fade-up">
+          <span class="section-eyebrow"
+            ><i class="bi bi-gear me-1"></i>Kompetensi</span
+          >
+          <h2 class="section-heading">Keahlian & Minat</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="row g-4">
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="skill-category-card">
+              <div class="skill-icon-wrap skill-icon-blue">
+                <i class="bi bi-code-slash"></i>
+              </div>
+              <h5 class="mb-1" style="color: var(--navy)">Technical Skills</h5>
+              <p class="text-muted mb-3" style="font-size: 0.83rem">
+                Bahasa Pemrograman & Tools
+              </p>
+              <div>
+                <span class="skill-pill">HTML5</span>
+                <span class="skill-pill">CSS3</span>
+                <span class="skill-pill">PHP</span>
+                <span class="skill-pill">Dart</span>
+                <span class="skill-pill">JavaScript</span>
+                <span class="skill-pill">Flutter</span>
+                <span class="skill-pill">Bootstrap</span>
+                <span class="skill-pill">Figma (UI Design)</span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="skill-category-card">
+              <div class="skill-icon-wrap skill-icon-amber">
+                <i class="bi bi-router"></i>
+              </div>
+              <h5 class="mb-1" style="color: var(--navy)">
+                Infrastructure & Systems
+              </h5>
+              <p class="text-muted mb-3" style="font-size: 0.83rem">
+                Jaringan & Sistem Operasi
+              </p>
+              <div>
+                <span class="skill-pill">Mikrotik</span>
+                <span class="skill-pill">Access Point Config</span>
+                <span class="skill-pill">CCTV Installation</span>
+                <span class="skill-pill">Windows Admin</span>
+                <span class="skill-pill">Network Infrastructure</span>
+                <span class="skill-pill">System Administration</span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="skill-category-card">
+              <div class="skill-icon-wrap skill-icon-green">
+                <i class="bi bi-person-badge"></i>
+              </div>
+              <h5 class="mb-1" style="color: var(--navy)">
+                Productivity & Soft Skills
+              </h5>
+              <p class="text-muted mb-3" style="font-size: 0.83rem">
+                Komunikasi & Kepemimpinan
+              </p>
+              <div>
+                <span class="skill-pill">Microsoft Office</span>
+                <span class="skill-pill">Leadership</span>
+                <span class="skill-pill">Public Speaking</span>
+                <span class="skill-pill">Team Coordination</span>
+                <span class="skill-pill">Event Management</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5" data-aos="fade-up">
+          <h5 class="mb-3" style="color: var(--navy)">Minat & Passion</h5>
+          <div>
+            <span class="interest-pill"
+              ><i class="bi bi-code-square" style="color: #3b82f6"></i>Software
+              Development</span
+            >
+            <span class="interest-pill"
+              ><i class="bi bi-bar-chart" style="color: #10b981"></i>Data
+              Analysis</span
+            >
+            <span class="interest-pill"
+              ><i class="bi bi-palette" style="color: #f59e0b"></i>UI/UX
+              Design</span
+            >
+            <span class="interest-pill"
+              ><i class="bi bi-rocket" style="color: #ec4899"></i>Startup
+              Business</span
+            >
+            <span class="interest-pill"
+              ><i class="bi bi-people" style="color: #8b5cf6"></i
+              >Leadership</span
+            >
+            <span class="interest-pill"
+              ><i class="bi bi-book" style="color: #14b8a6"></i>Teaching</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-dark" id="contact">
+      <div class="container">
+        <div data-aos="fade-up">
+          <span class="section-eyebrow"
+            ><i class="bi bi-send me-1"></i>Get In Touch</span
+          >
+          <h2 class="section-heading">Hubungi Saya</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
+            <div class="contact-info-card">
+              <h5 class="mb-1" style="color: white; font-size: 1.3rem">
+                Informasi Kontak
+              </h5>
+              <p
+                class="mb-4"
+                style="color: var(--text-muted-navy); font-size: 0.88rem"
+              >
+                Jangan ragu untuk menghubungi saya kapan saja.
+              </p>
+
+              <a
+                href="mailto:dewagemilang18@gmail.com"
+                class="contact-item d-flex"
+                style="color: white"
+              >
+                <div class="contact-item-icon">
+                  <i class="bi bi-envelope"></i>
+                </div>
+                <div>
+                  <div class="contact-item-label">Email</div>
+                  <div class="contact-item-text">dewagemilang18@gmail.com</div>
+                </div>
+              </a>
+              <a
+                href="tel:+6282131655241"
+                class="contact-item d-flex"
+                style="color: white"
+              >
+                <div class="contact-item-icon">
+                  <i class="bi bi-telephone"></i>
+                </div>
+                <div>
+                  <div class="contact-item-label">Phone</div>
+                  <div class="contact-item-text">+62 821 3165 5241</div>
+                </div>
+              </a>
+              <div
+                class="contact-item d-flex"
+                style="color: white; cursor: default"
+              >
+                <div class="contact-item-icon">
+                  <i class="bi bi-geo-alt"></i>
+                </div>
+                <div>
+                  <div class="contact-item-label">Lokasi</div>
+                  <div class="contact-item-text">
+                    Desa Kedungringin, Muncar, Banyuwangi
+                  </div>
+                </div>
+              </div>
+              <a
+                href="https://linkedin.com/in/de.wa_gemilang"
+                target="_blank"
+                class="contact-item d-flex"
+                style="color: white"
+              >
+                <div class="contact-item-icon">
+                  <i class="bi bi-linkedin"></i>
+                </div>
+                <div>
+                  <div class="contact-item-label">LinkedIn</div>
+                  <div class="contact-item-text">de.wa_gemilang</div>
+                </div>
+              </a>
+              <a
+                href="https://instagram.com/de.wa_gemilang"
+                target="_blank"
+                class="contact-item d-flex"
+                style="color: white"
+              >
+                <div class="contact-item-icon">
+                  <i class="bi bi-instagram"></i>
+                </div>
+                <div>
+                  <div class="contact-item-label">Instagram</div>
+                  <div class="contact-item-text">@de.wa_gemilang</div>
+                </div>
+              </a>
+              <a
+                href="https://wa.me/6282131655241"
+                target="_blank"
+                class="contact-item d-flex"
+                style="color: white"
+              >
+                <div class="contact-item-icon">
+                  <i class="bi bi-whatsapp"></i>
+                </div>
+                <div>
+                  <div class="contact-item-label">WhatsApp</div>
+                  <div class="contact-item-text">Chat Sekarang</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-7" data-aos="fade-up" data-aos-delay="200">
+            <div class="contact-form-card">
+              <h5 class="mb-1" style="color: var(--navy); font-size: 1.3rem">
+                Kirim Pesan
+              </h5>
+              <p class="text-muted mb-4" style="font-size: 0.88rem">
+                Isi formulir di bawah dan saya akan segera merespons.
+              </p>
+              <form
+                action="https://mail.google.com/mail/?view=cm&fs=1&to=dewagemilang18@gmail.com&su=Pesan dari Website Portofolio"
+                method="GET"
+                target="_blank"
+              >
+                <div class="row g-3">
+                  <div class="col-sm-6">
+                    <label class="form-label">Nama Lengkap</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="body"
+                      placeholder="Nama Anda"
+                      required
+                    />
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label">Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="email@anda.com"
+                      required
+                    />
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Subjek</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Topik pesan Anda"
+                    />
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Pesan</label>
+                    <textarea
+                      class="form-control"
+                      name="body"
+                      rows="5"
+                      placeholder="Tuliskan pesan Anda di sini..."
+                      required
+                    ></textarea>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-navy-primary w-100">
+                      <i class="bi bi-send me-2"></i>Kirim Pesan
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer-main">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="footer-brand mb-2"><span>D</span>G</div>
+            <p class="footer-desc">
+              Dewa Gemilang — Software Engineer & UI Designer yang passionate
+              dalam membangun solusi digital inovatif.
+            </p>
+            <div class="mt-3">
+              <a
+                href="https://linkedin.com/in/de.wa_gemilang"
+                target="_blank"
+                class="footer-social-btn"
+                ><i class="bi bi-linkedin"></i
+              ></a>
+              <a
+                href="https://instagram.com/de.wa_gemilang"
+                target="_blank"
+                class="footer-social-btn"
+                ><i class="bi bi-instagram"></i
+              ></a>
+              <a
+                href="https://wa.me/6282131655241"
+                target="_blank"
+                class="footer-social-btn"
+                ><i class="bi bi-whatsapp"></i
+              ></a>
+              <a
+                href="mailto:dewagemilang18@gmail.com"
+                class="footer-social-btn"
+                ><i class="bi bi-envelope"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-6">
+            <p
+              class="text-uppercase mb-3"
+              style="
+                color: rgba(255, 255, 255, 0.4);
+                font-size: 0.75rem;
+                letter-spacing: 1.5px;
+                font-weight: 600;
+              "
+            >
+              Navigasi
+            </p>
+            <a href="#home" class="footer-link">Beranda</a>
+            <a href="#education" class="footer-link">Pendidikan</a>
+            <a href="#experience" class="footer-link">Pengalaman</a>
+            <a href="#skills" class="footer-link">Keahlian</a>
+            <a href="#contact" class="footer-link">Kontak</a>
+          </div>
+          <div class="col-lg-3 col-6">
+            <p
+              class="text-uppercase mb-3"
+              style="
+                color: rgba(255, 255, 255, 0.4);
+                font-size: 0.75rem;
+                letter-spacing: 1.5px;
+                font-weight: 600;
+              "
+            >
+              Keahlian
+            </p>
+            <a href="#skills" class="footer-link">Web Development</a>
+            <a href="#skills" class="footer-link">Mobile App (Flutter)</a>
+            <a href="#skills" class="footer-link">UI/UX Design</a>
+            <a href="#skills" class="footer-link">Network Specialist</a>
+          </div>
+          <div class="col-lg-3">
+            <p
+              class="text-uppercase mb-3"
+              style="
+                color: rgba(255, 255, 255, 0.4);
+                font-size: 0.75rem;
+                letter-spacing: 1.5px;
+                font-weight: 600;
+              "
+            >
+              Kontak
+            </p>
+            <p class="footer-desc">
+              <i
+                class="bi bi-envelope me-2"
+                style="color: var(--accent-bright)"
+              ></i
+              >dewagemilang18@gmail.com<br />
+              <i
+                class="bi bi-telephone me-2 mt-2 d-inline-block"
+                style="color: var(--accent-bright)"
+              ></i
+              >+62 821 3165 5241
+            </p>
+            <a
+              href="https://drive.google.com/file/d/1WUm-JXrQpkk-Oe1KQnU0J4kZWqG2yWrl/view?usp=sharing"
+              target="_blank"
+              class="btn btn-navy-primary btn-sm mt-2"
+            >
+              <i class="bi bi-download me-1"></i>Download CV
+            </a>
+          </div>
+        </div>
+        <div
+          class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2"
+        >
+          <span
+            >© 2025
+            <strong style="color: rgba(255, 255, 255, 0.5)"
+              >Dewa Gemilang</strong
+            >. All rights reserved.</span
+          >
+          <span
+            >Built with
+            <i
+              class="bi bi-heart-fill"
+              style="color: #ef4444; font-size: 0.75rem"
+            ></i>
+            & Bootstrap</span
+          >
+        </div>
+      </div>
+    </footer>
+
+    <button
+      id="scrollTop"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    >
+      <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      AOS.init({ duration: 700, once: true, offset: 60 });
+
+      window.addEventListener("scroll", () => {
+        const btn = document.getElementById("scrollTop");
+        btn.classList.toggle("show", window.scrollY > 400);
+      });
+
+      const sections = document.querySelectorAll("section[id], div[id]");
+      const navLinks = document.querySelectorAll(".nav-link");
+      window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((s) => {
+          if (window.scrollY >= s.offsetTop - 80)
+            current = s.getAttribute("id");
+        });
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === "#" + current)
+            link.classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>
