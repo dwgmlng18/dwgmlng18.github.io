@@ -4,1594 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dewa Gemilang — Software Engineer</title>
+
+    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <!-- Bootstrap Icons -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
       rel="stylesheet"
     />
+    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
+    <!-- AOS (Animate On Scroll) CSS -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
       rel="stylesheet"
     />
-    <style>
-      :root {
-        --navy: #07111f;
-        --navy-mid: #0d1d35;
-        --navy-card: #101f38;
-        --navy-light: #1a3a6b;
-        --accent: #2563eb;
-        --accent-bright: #3b82f6;
-        --accent-glow: rgba(59, 130, 246, 0.35);
-        --gold: #f59e0b;
-        --white: #ffffff;
-        --text-muted: #94a3b8;
-        --border-soft: rgba(59, 130, 246, 0.18);
-        --T: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: "DM Sans", sans-serif;
-        background: #fff;
-        color: #1e293b;
-        overflow-x: hidden;
-        cursor: none;
-      }
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-family: "Playfair Display", serif;
-      }
 
-      #cur {
-        position: fixed;
-        width: 10px;
-        height: 10px;
-        background: var(--accent-bright);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-50%, -50%);
-        transition:
-          transform 0.12s,
-          width 0.2s,
-          height 0.2s;
-        mix-blend-mode: difference;
-      }
-      #cur-r {
-        position: fixed;
-        width: 36px;
-        height: 36px;
-        border: 2px solid rgba(59, 130, 246, 0.5);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9998;
-        transform: translate(-50%, -50%);
-        transition: all 0.18s ease-out;
-      }
-      .cur-big #cur {
-        width: 18px;
-        height: 18px;
-      }
-      .cur-big #cur-r {
-        transform: translate(-50%, -50%) scale(1.6);
-        opacity: 0.7;
-      }
-      @media (pointer: coarse) {
-        #cur,
-        #cur-r {
-          display: none;
-        }
-        body {
-          cursor: auto;
-        }
-      }
-
-      #loader {
-        position: fixed;
-        inset: 0;
-        background: var(--navy);
-        z-index: 10000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 24px;
-        transition:
-          opacity 0.7s,
-          visibility 0.7s;
-      }
-      #loader.out {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-      }
-      .ld-logo {
-        font-family: "Playfair Display", serif;
-        font-size: 3.5rem;
-        font-weight: 900;
-        color: #fff;
-        letter-spacing: 2px;
-      }
-      .ld-logo span {
-        color: var(--accent-bright);
-      }
-      .ld-bar {
-        width: 220px;
-        height: 2px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 2px;
-        overflow: hidden;
-      }
-      .ld-fill {
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          var(--accent),
-          var(--accent-bright),
-          #60a5fa
-        );
-        animation: ld 1.6s ease forwards;
-      }
-      @keyframes ld {
-        from {
-          width: 0;
-        }
-        to {
-          width: 100%;
-        }
-      }
-
-      #prog {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 3px;
-        background: linear-gradient(
-          90deg,
-          var(--accent),
-          var(--accent-bright),
-          #93c5fd
-        );
-        z-index: 10001;
-        width: 0;
-        box-shadow: 0 0 12px var(--accent-bright);
-        transition: width 0.1s;
-      }
-
-      .navbar {
-        background: transparent !important;
-        padding: 20px 0;
-        transition: all 0.4s ease;
-        border-bottom: 1px solid transparent;
-      }
-      .navbar.sc {
-        background: rgba(7, 17, 31, 0.96) !important;
-        backdrop-filter: blur(20px);
-        padding: 12px 0;
-        border-bottom: 1px solid var(--border-soft);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-      }
-      .navbar-brand {
-        font-family: "Playfair Display", serif;
-        font-size: 1.7rem;
-        font-weight: 900;
-        color: #fff !important;
-        text-decoration: none;
-        letter-spacing: 1px;
-      }
-      .navbar-brand .ac {
-        color: var(--accent-bright);
-        transition: text-shadow 0.3s;
-      }
-      .navbar-brand:hover .ac {
-        text-shadow: 0 0 20px var(--accent-bright);
-      }
-      .nav-link-c {
-        position: relative;
-        color: rgba(255, 255, 255, 0.7) !important;
-        font-weight: 500;
-        font-size: 0.88rem;
-        letter-spacing: 0.3px;
-        padding: 8px 16px !important;
-        border-radius: 8px;
-        transition: all var(--T);
-        overflow: hidden;
-      }
-      .nav-link-c::after {
-        content: "";
-        position: absolute;
-        bottom: 5px;
-        left: 50%;
-        transform: translateX(-50%) scaleX(0);
-        width: 16px;
-        height: 2px;
-        background: var(--accent-bright);
-        border-radius: 2px;
-        transition: transform var(--T);
-      }
-      .nav-link-c:hover,
-      .nav-link-c.on {
-        color: #fff !important;
-        background: rgba(59, 130, 246, 0.12);
-      }
-      .nav-link-c:hover::after,
-      .nav-link-c.on::after {
-        transform: translateX(-50%) scaleX(1);
-      }
-      .nav-cta {
-        background: var(--accent);
-        color: #fff !important;
-        padding: 9px 22px !important;
-        border-radius: 9px;
-        font-weight: 700;
-        border: 2px solid var(--accent);
-        transition: all var(--T);
-        font-size: 0.88rem !important;
-      }
-      .nav-cta:hover {
-        background: transparent;
-        color: var(--accent-bright) !important;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px var(--accent-glow);
-      }
-      .hmb {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-      }
-      .hmb span {
-        width: 24px;
-        height: 2px;
-        background: #fff;
-        border-radius: 2px;
-        transition: all 0.3s;
-        display: block;
-      }
-
-      .hero-s {
-        background: var(--navy);
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        padding: 130px 0 80px;
-        position: relative;
-        overflow: hidden;
-      }
-      .h-mesh {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        overflow: hidden;
-      }
-      .orb {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(70px);
-        animation: fl 9s ease-in-out infinite;
-      }
-      .o1 {
-        width: 550px;
-        height: 550px;
-        background: radial-gradient(
-          circle,
-          rgba(37, 99, 235, 0.18) 0%,
-          transparent 70%
-        );
-        top: -150px;
-        right: -150px;
-        animation-delay: 0s;
-      }
-      .o2 {
-        width: 350px;
-        height: 350px;
-        background: radial-gradient(
-          circle,
-          rgba(59, 130, 246, 0.12) 0%,
-          transparent 70%
-        );
-        bottom: 20px;
-        left: -80px;
-        animation-delay: 3s;
-      }
-      .o3 {
-        width: 250px;
-        height: 250px;
-        background: radial-gradient(
-          circle,
-          rgba(245, 158, 11, 0.07) 0%,
-          transparent 70%
-        );
-        top: 45%;
-        left: 42%;
-        animation-delay: 6s;
-      }
-      @keyframes fl {
-        0%,
-        100% {
-          transform: translateY(0) scale(1);
-        }
-        50% {
-          transform: translateY(-28px) scale(1.04);
-        }
-      }
-      .h-grid {
-        position: absolute;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
-        background-size: 56px 56px;
-        pointer-events: none;
-      }
-
-      .hero-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: rgba(59, 130, 246, 0.1);
-        border: 1px solid rgba(59, 130, 246, 0.3);
-        color: var(--accent-bright);
-        padding: 8px 20px;
-        border-radius: 50px;
-        font-size: 0.78rem;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin-bottom: 22px;
-        position: relative;
-        overflow: hidden;
-      }
-      .hero-tag::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(59, 130, 246, 0.15),
-          transparent
-        );
-        transform: translateX(-100%);
-        animation: sh 3.5s 2s infinite;
-      }
-      @keyframes sh {
-        to {
-          transform: translateX(100%);
-        }
-      }
-      .tdot {
-        width: 7px;
-        height: 7px;
-        background: #10b981;
-        border-radius: 50%;
-        box-shadow: 0 0 8px #10b981;
-        animation: pd 2s infinite;
-      }
-      @keyframes pd {
-        0%,
-        100% {
-          box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
-        }
-        50% {
-          box-shadow: 0 0 0 7px rgba(16, 185, 129, 0);
-        }
-      }
-
-      .h-name {
-        font-size: clamp(3rem, 7vw, 5.5rem);
-        font-weight: 900;
-        color: #fff;
-        line-height: 1.02;
-        margin-bottom: 8px;
-      }
-      .h-name .gr {
-        color: transparent;
-        background: linear-gradient(
-          135deg,
-          var(--accent-bright) 0%,
-          #60a5fa 40%,
-          #93c5fd 100%
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-      }
-      .h-role {
-        color: var(--text-muted);
-        font-size: 1.05rem;
-        margin-bottom: 26px;
-      }
-      .h-sep {
-        color: rgba(59, 130, 246, 0.4);
-        margin: 0 8px;
-      }
-      .h-desc {
-        color: rgba(255, 255, 255, 0.65);
-        font-size: 0.97rem;
-        line-height: 1.9;
-        max-width: 500px;
-        margin-bottom: 36px;
-      }
-
-      .hstats {
-        display: flex;
-        margin-bottom: 40px;
-      }
-      .hs {
-        padding: 0 28px;
-        border-right: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      .hs:first-child {
-        padding-left: 0;
-      }
-      .hs:last-child {
-        border-right: none;
-      }
-      .hs-num {
-        font-family: "Playfair Display", serif;
-        font-size: 2.3rem;
-        font-weight: 900;
-        color: #fff;
-        display: block;
-        line-height: 1;
-      }
-      .hs-num em {
-        font-style: normal;
-        color: var(--accent-bright);
-      }
-      .hs-lbl {
-        font-size: 0.7rem;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        margin-top: 5px;
-        display: block;
-      }
-      @media (max-width: 575px) {
-        .hstats {
-          flex-wrap: wrap;
-          gap: 20px;
-        }
-        .hs {
-          padding: 0;
-          border: none;
-        }
-      }
-
-      .btn-pg {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        background: linear-gradient(135deg, var(--accent), #1d4ed8);
-        color: #fff;
-        padding: 14px 32px;
-        border-radius: 10px;
-        font-weight: 700;
-        font-size: 0.95rem;
-        border: none;
-        position: relative;
-        overflow: hidden;
-        transition: all var(--T);
-        text-decoration: none;
-        cursor: pointer;
-        letter-spacing: 0.3px;
-        font-family: "DM Sans", sans-serif;
-      }
-      .btn-pg::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, #3b82f6, var(--accent));
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-      .btn-pg:hover {
-        color: #fff;
-        transform: translateY(-3px);
-        box-shadow: 0 14px 38px var(--accent-glow);
-      }
-      .btn-pg:hover::before {
-        opacity: 1;
-      }
-      .btn-pg:active {
-        transform: translateY(-1px);
-      }
-      .btn-pg > * {
-        position: relative;
-        z-index: 1;
-      }
-      .btn-og {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        background: transparent;
-        color: #fff;
-        padding: 14px 32px;
-        border-radius: 10px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        border: 2px solid rgba(255, 255, 255, 0.28);
-        position: relative;
-        overflow: hidden;
-        transition: all var(--T);
-        text-decoration: none;
-        cursor: pointer;
-        letter-spacing: 0.3px;
-        font-family: "DM Sans", sans-serif;
-      }
-      .btn-og::before {
-        content: "";
-        position: absolute;
-        inset: -2px;
-        background: rgba(59, 130, 246, 0.12);
-        opacity: 0;
-        transition: opacity 0.3s;
-        border-radius: 10px;
-      }
-      .btn-og:hover {
-        color: #fff;
-        border-color: rgba(59, 130, 246, 0.7);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(37, 99, 235, 0.2);
-      }
-      .btn-og:hover::before {
-        opacity: 1;
-      }
-      .btn-og > * {
-        position: relative;
-        z-index: 1;
-      }
-      .rpl {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.25);
-        transform: scale(0);
-        animation: rp 0.65s linear;
-        pointer-events: none;
-      }
-      @keyframes rp {
-        to {
-          transform: scale(4);
-          opacity: 0;
-        }
-      }
-
-      .prof-w {
-        position: relative;
-        display: inline-block;
-      }
-      .p-o {
-        width: 370px;
-        height: 370px;
-        border-radius: 50%;
-        border: 1px solid rgba(59, 130, 246, 0.18);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        animation: pr 3.5s ease-in-out infinite;
-      }
-      @keyframes pr {
-        0%,
-        100% {
-          box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.15);
-        }
-        50% {
-          box-shadow: 0 0 0 22px rgba(59, 130, 246, 0);
-        }
-      }
-      .p-m {
-        width: 320px;
-        height: 320px;
-        border-radius: 50%;
-        border: 1.5px dashed rgba(59, 130, 246, 0.22);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        animation: sp 26s linear infinite;
-      }
-      .p-i {
-        width: 292px;
-        height: 292px;
-        border-radius: 50%;
-        border: 3px solid rgba(37, 99, 235, 0.45);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(
-          145deg,
-          rgba(37, 99, 235, 0.1),
-          rgba(59, 130, 246, 0.04)
-        );
-      }
-      .p-img {
-        width: 272px;
-        height: 272px;
-        border-radius: 50%;
-        object-fit: cover;
-        box-shadow:
-          0 28px 70px rgba(0, 0, 0, 0.5),
-          0 0 60px rgba(37, 99, 235, 0.22);
-        transition: transform 0.5s;
-      }
-      .p-i:hover .p-img {
-        transform: scale(1.05);
-      }
-      @keyframes sp {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-      .p-badge {
-        position: absolute;
-        bottom: 22px;
-        right: -18px;
-        background: linear-gradient(135deg, var(--navy-mid), var(--navy-card));
-        border: 1px solid rgba(59, 130, 246, 0.4);
-        border-radius: 16px;
-        padding: 12px 18px;
-        text-align: center;
-        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
-        animation: fb 4s ease-in-out infinite;
-      }
-      @keyframes fb {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-9px);
-        }
-      }
-      .p-bnum {
-        font-family: "Playfair Display", serif;
-        font-size: 1.5rem;
-        font-weight: 900;
-        color: var(--gold);
-        display: block;
-        line-height: 1;
-      }
-      .p-btxt {
-        font-size: 0.67rem;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-top: 3px;
-        display: block;
-      }
-      .p-tag {
-        position: absolute;
-        top: 18px;
-        left: -22px;
-        background: rgba(7, 17, 31, 0.9);
-        border: 1px solid rgba(59, 130, 246, 0.35);
-        border-radius: 12px;
-        padding: 8px 14px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        backdrop-filter: blur(10px);
-        animation: fb 4s ease-in-out infinite 2s;
-      }
-      .pt-d {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: #10b981;
-        box-shadow: 0 0 8px #10b981;
-      }
-      .pt-t {
-        font-size: 0.72rem;
-        color: rgba(255, 255, 255, 0.8);
-        font-weight: 600;
-        font-family: "DM Sans", sans-serif;
-      }
-      @media (max-width: 767px) {
-        .p-o {
-          width: 270px;
-          height: 270px;
-        }
-        .p-m {
-          width: 234px;
-          height: 234px;
-        }
-        .p-i {
-          width: 212px;
-          height: 212px;
-        }
-        .p-img {
-          width: 200px;
-          height: 200px;
-        }
-        .p-badge {
-          right: -8px;
-          bottom: 10px;
-        }
-        .p-tag {
-          left: -8px;
-        }
-      }
-      @media (max-width: 575px) {
-        .p-tag {
-          display: none;
-        }
-      }
-
-      .sl {
-        background: #fff;
-        padding: 100px 0;
-      }
-      .sd {
-        background: #f0f5ff;
-        padding: 100px 0;
-      }
-      .sn {
-        background: linear-gradient(180deg, var(--navy-mid), var(--navy-card));
-        padding: 100px 0;
-      }
-      .s-eye {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-family: "DM Sans", sans-serif;
-        font-size: 0.75rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 2.5px;
-        color: var(--accent);
-        margin-bottom: 14px;
-      }
-      .s-eye::before {
-        content: "";
-        width: 22px;
-        height: 2px;
-        background: var(--accent);
-        border-radius: 2px;
-      }
-      .s-h {
-        font-size: clamp(2rem, 4vw, 3rem);
-        font-weight: 900;
-        color: var(--navy);
-        margin-bottom: 14px;
-        line-height: 1.15;
-      }
-      .s-h-w {
-        color: #fff !important;
-      }
-      .s-div {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 52px;
-      }
-      .s-div::before {
-        content: "";
-        width: 48px;
-        height: 3px;
-        background: linear-gradient(90deg, var(--accent), var(--accent-bright));
-        border-radius: 3px;
-      }
-      .s-div::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          rgba(37, 99, 235, 0.15),
-          transparent
-        );
-      }
-      .s-div.w::before {
-        background: linear-gradient(
-          90deg,
-          var(--accent-bright),
-          rgba(59, 130, 246, 0.3)
-        );
-      }
-      .s-div.w::after {
-        background: linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0.08),
-          transparent
-        );
-      }
-
-      .edu-c {
-        background: #fff;
-        border-radius: 22px;
-        border: 1px solid #e8edf5;
-        padding: 34px;
-        height: 100%;
-        transition: all 0.4s;
-        position: relative;
-        overflow: hidden;
-      }
-      .edu-c::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 4px;
-        height: 100%;
-        background: linear-gradient(
-          to bottom,
-          var(--accent),
-          var(--accent-bright),
-          rgba(59, 130, 246, 0.15)
-        );
-      }
-      .edu-c::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 130px;
-        height: 130px;
-        background: radial-gradient(
-          circle at top right,
-          rgba(37, 99, 235, 0.05),
-          transparent 70%
-        );
-        pointer-events: none;
-      }
-      .edu-c:hover {
-        border-color: rgba(37, 99, 235, 0.25);
-        box-shadow: 0 24px 65px rgba(37, 99, 235, 0.1);
-        transform: translateY(-7px);
-      }
-      .edu-ico {
-        width: 58px;
-        height: 58px;
-        background: linear-gradient(
-          135deg,
-          var(--accent),
-          var(--accent-bright)
-        );
-        border-radius: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.55rem;
-        color: #fff;
-        margin-bottom: 20px;
-        box-shadow: 0 10px 24px rgba(37, 99, 235, 0.3);
-        transition: transform 0.3s;
-      }
-      .edu-c:hover .edu-ico {
-        transform: rotate(-6deg) scale(1.1);
-      }
-      .edu-yr {
-        background: rgba(37, 99, 235, 0.08);
-        color: var(--accent);
-        border: 1px solid rgba(37, 99, 235, 0.2);
-        padding: 5px 14px;
-        border-radius: 20px;
-        font-size: 0.76rem;
-        font-weight: 800;
-        white-space: nowrap;
-        letter-spacing: 0.5px;
-      }
-      .s-chip {
-        display: inline-block;
-        background: #f0f5ff;
-        color: var(--navy-light);
-        border: 1px solid rgba(37, 99, 235, 0.12);
-        padding: 5px 14px;
-        border-radius: 20px;
-        font-size: 0.76rem;
-        font-weight: 600;
-        margin: 3px 2px;
-        transition: all 0.25s;
-        cursor: default;
-      }
-      .s-chip:hover {
-        background: var(--accent);
-        color: #fff;
-        border-color: var(--accent);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
-      }
-
-      .etw .nav-pills {
-        background: rgba(7, 17, 31, 0.65);
-        border: 1px solid rgba(59, 130, 246, 0.15);
-        padding: 6px;
-        border-radius: 14px;
-        flex-wrap: wrap;
-        gap: 4px;
-        backdrop-filter: blur(12px);
-      }
-      .etw .nav-pills .nav-link {
-        color: rgba(255, 255, 255, 0.55);
-        border-radius: 10px;
-        padding: 10px 20px;
-        font-size: 0.85rem;
-        font-weight: 600;
-        transition: all 0.3s;
-        border: 1px solid transparent;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        font-family: "DM Sans", sans-serif;
-      }
-      .etw .nav-pills .nav-link.active {
-        background: var(--accent);
-        color: #fff;
-        border-color: rgba(59, 130, 246, 0.4);
-        box-shadow: 0 4px 18px rgba(37, 99, 235, 0.4);
-      }
-      .etw .nav-pills .nav-link:hover:not(.active) {
-        color: #fff;
-        background: rgba(255, 255, 255, 0.07);
-        border-color: rgba(255, 255, 255, 0.1);
-      }
-      @media (max-width: 575px) {
-        .etw .nav-pills .nav-link {
-          padding: 8px 12px;
-          font-size: 0.78rem;
-        }
-      }
-
-      .tl {
-        position: relative;
-        padding-left: 34px;
-      }
-      .tl::before {
-        content: "";
-        position: absolute;
-        left: 8px;
-        top: 10px;
-        bottom: 10px;
-        width: 2px;
-        background: linear-gradient(
-          to bottom,
-          var(--accent),
-          rgba(37, 99, 235, 0.08)
-        );
-        border-radius: 2px;
-      }
-      .tc {
-        position: relative;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 18px;
-        padding: 24px 28px;
-        margin-bottom: 16px;
-        transition: all 0.35s;
-      }
-      .tc:hover {
-        background: rgba(37, 99, 235, 0.07);
-        border-color: rgba(37, 99, 235, 0.38);
-        transform: translateX(7px);
-        box-shadow: 0 10px 32px rgba(0, 0, 0, 0.2);
-      }
-      .td {
-        position: absolute;
-        left: -38px;
-        top: 22px;
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        background: var(--accent);
-        border: 3px solid var(--navy-card);
-        box-shadow:
-          0 0 0 4px rgba(37, 99, 235, 0.22),
-          0 0 14px rgba(37, 99, 235, 0.35);
-        transition: all 0.3s;
-      }
-      .tc:hover .td {
-        box-shadow:
-          0 0 0 7px rgba(37, 99, 235, 0.18),
-          0 0 22px rgba(37, 99, 235, 0.5);
-        transform: scale(1.25);
-      }
-      .ebdg {
-        font-size: 0.72rem;
-        font-weight: 800;
-        padding: 4px 12px;
-        border-radius: 20px;
-        letter-spacing: 0.5px;
-        display: inline-block;
-      }
-      .bm {
-        background: rgba(245, 158, 11, 0.12);
-        color: #f59e0b;
-        border: 1px solid rgba(245, 158, 11, 0.3);
-      }
-      .bo {
-        background: rgba(16, 185, 129, 0.12);
-        color: #10b981;
-        border: 1px solid rgba(16, 185, 129, 0.3);
-      }
-      .bp {
-        background: rgba(139, 92, 246, 0.12);
-        color: #a78bfa;
-        border: 1px solid rgba(139, 92, 246, 0.3);
-      }
-      .bv {
-        background: rgba(236, 72, 153, 0.12);
-        color: #f472b6;
-        border: 1px solid rgba(236, 72, 153, 0.3);
-      }
-      .bs {
-        background: rgba(59, 130, 246, 0.12);
-        color: #60a5fa;
-        border: 1px solid rgba(59, 130, 246, 0.3);
-      }
-      .et {
-        color: #fff;
-        font-family: "DM Sans", sans-serif;
-        font-size: 1rem;
-        font-weight: 700;
-        margin-bottom: 4px;
-      }
-      .es {
-        color: var(--text-muted);
-        font-size: 0.85rem;
-        margin-bottom: 10px;
-        font-family: "DM Sans", sans-serif;
-      }
-      .ep {
-        font-size: 0.77rem;
-        color: var(--accent-bright);
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        margin-bottom: 14px;
-        font-family: "DM Sans", sans-serif;
-      }
-      .el {
-        color: rgba(255, 255, 255, 0.65);
-        font-size: 0.87rem;
-        padding-left: 18px;
-        margin-bottom: 0;
-        line-height: 1.9;
-        font-family: "DM Sans", sans-serif;
-      }
-      .el li::marker {
-        color: var(--accent-bright);
-      }
-      .ssl {
-        font-family: "DM Sans", sans-serif;
-        font-size: 0.7rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: var(--accent-bright);
-        margin-bottom: 16px;
-        padding-bottom: 8px;
-        border-bottom: 1px solid rgba(37, 99, 235, 0.15);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .scc {
-        background: #fff;
-        border: 1px solid #e8edf5;
-        border-radius: 22px;
-        padding: 32px;
-        height: 100%;
-        transition: all 0.4s;
-        position: relative;
-        overflow: hidden;
-      }
-      .scc::after {
-        content: "";
-        position: absolute;
-        bottom: -50px;
-        right: -50px;
-        width: 130px;
-        height: 130px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(37, 99, 235, 0.05),
-          transparent
-        );
-        pointer-events: none;
-        transition: all 0.5s;
-      }
-      .scc:hover {
-        border-color: rgba(37, 99, 235, 0.25);
-        box-shadow: 0 22px 55px rgba(37, 99, 235, 0.1);
-        transform: translateY(-6px);
-      }
-      .scc:hover::after {
-        transform: scale(2.5);
-      }
-      .si-w {
-        width: 54px;
-        height: 54px;
-        border-radius: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.45rem;
-        margin-bottom: 20px;
-        transition: transform 0.35s;
-      }
-      .scc:hover .si-w {
-        transform: rotate(-8deg) scale(1.12);
-      }
-      .si-b {
-        background: linear-gradient(
-          135deg,
-          rgba(37, 99, 235, 0.14),
-          rgba(59, 130, 246, 0.07)
-        );
-        color: var(--accent);
-      }
-      .si-a {
-        background: linear-gradient(
-          135deg,
-          rgba(245, 158, 11, 0.14),
-          rgba(245, 158, 11, 0.07)
-        );
-        color: #f59e0b;
-      }
-      .si-g {
-        background: linear-gradient(
-          135deg,
-          rgba(16, 185, 129, 0.14),
-          rgba(16, 185, 129, 0.07)
-        );
-        color: #10b981;
-      }
-      .sp {
-        display: inline-block;
-        background: #f0f5ff;
-        color: var(--navy-light);
-        border: 1px solid rgba(37, 99, 235, 0.1);
-        padding: 7px 16px;
-        border-radius: 50px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        margin: 4px 3px;
-        transition: all 0.28s;
-        cursor: default;
-        letter-spacing: 0.2px;
-      }
-      .sp:hover {
-        background: var(--navy);
-        color: #fff;
-        border-color: var(--navy);
-        transform: translateY(-3px);
-        box-shadow: 0 7px 18px rgba(7, 17, 31, 0.2);
-      }
-      .ip {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: linear-gradient(135deg, var(--navy-mid), var(--navy-card));
-        color: rgba(255, 255, 255, 0.85);
-        border: 1px solid rgba(59, 130, 246, 0.18);
-        padding: 9px 18px;
-        border-radius: 50px;
-        font-size: 0.82rem;
-        font-weight: 600;
-        margin: 4px 3px;
-        transition: all 0.3s;
-        cursor: default;
-      }
-      .ip:hover {
-        background: linear-gradient(135deg, var(--accent), #1d4ed8);
-        border-color: var(--accent);
-        transform: translateY(-3px);
-        box-shadow: 0 9px 22px rgba(37, 99, 235, 0.3);
-        color: #fff;
-      }
-
-      .ci-c {
-        background: linear-gradient(145deg, var(--navy-mid), var(--navy-card));
-        border-radius: 26px;
-        padding: 40px;
-        height: 100%;
-        border: 1px solid var(--border-soft);
-        position: relative;
-        overflow: hidden;
-      }
-      .ci-c::before {
-        content: "";
-        position: absolute;
-        top: -80px;
-        right: -80px;
-        width: 220px;
-        height: 220px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(37, 99, 235, 0.1),
-          transparent 70%
-        );
-      }
-      .c-item {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        padding: 13px 10px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        text-decoration: none;
-        transition: all 0.25s;
-        border-radius: 10px;
-        margin: 0 -10px;
-      }
-      .c-item:last-child {
-        border-bottom: none;
-      }
-      .c-item:hover {
-        background: rgba(37, 99, 235, 0.08);
-        padding-left: 18px;
-      }
-      .c-ico {
-        width: 46px;
-        height: 46px;
-        background: rgba(37, 99, 235, 0.12);
-        border: 1px solid rgba(37, 99, 235, 0.22);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.15rem;
-        color: var(--accent-bright);
-        flex-shrink: 0;
-        transition: all 0.28s;
-      }
-      .c-item:hover .c-ico {
-        background: var(--accent);
-        border-color: var(--accent);
-        color: #fff;
-        transform: rotate(-6deg) scale(1.1);
-        box-shadow: 0 7px 20px rgba(37, 99, 235, 0.38);
-      }
-      .c-txt {
-        color: rgba(255, 255, 255, 0.85);
-        font-size: 0.9rem;
-        font-family: "DM Sans", sans-serif;
-        font-weight: 500;
-      }
-      .c-lbl {
-        color: var(--text-muted);
-        font-size: 0.7rem;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        margin-bottom: 2px;
-        font-family: "DM Sans", sans-serif;
-      }
-      .cf-c {
-        background: #fff;
-        border-radius: 26px;
-        padding: 42px;
-        height: 100%;
-        border: 1px solid #e8edf5;
-        box-shadow: 0 6px 35px rgba(37, 99, 235, 0.06);
-      }
-      .f-lbl {
-        color: #475569;
-        font-weight: 700;
-        font-size: 0.78rem;
-        font-family: "DM Sans", sans-serif;
-        margin-bottom: 7px;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-      .f-ctrl {
-        border-radius: 11px;
-        border: 2px solid #edf2f7;
-        padding: 13px 17px;
-        font-size: 0.92rem;
-        transition: all 0.28s;
-        font-family: "DM Sans", sans-serif;
-        background: #fafbff;
-        width: 100%;
-        display: block;
-        color: #1e293b;
-        outline: none;
-      }
-      .f-ctrl:focus {
-        border-color: var(--accent);
-        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
-        background: #fff;
-      }
-      .f-ctrl:hover {
-        border-color: rgba(37, 99, 235, 0.32);
-      }
-      .f-ctrl::placeholder {
-        color: #b0bec5;
-      }
-      textarea.f-ctrl {
-        resize: vertical;
-        min-height: 130px;
-      }
-      .btn-sub {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        width: 100%;
-        padding: 16px 32px;
-        background: linear-gradient(135deg, var(--accent), #1d4ed8);
-        color: #fff;
-        border: none;
-        border-radius: 13px;
-        font-weight: 800;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: all var(--T);
-        position: relative;
-        overflow: hidden;
-        font-family: "DM Sans", sans-serif;
-        letter-spacing: 0.3px;
-      }
-      .btn-sub::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, #3b82f6, var(--accent));
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-      .btn-sub:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 16px 40px rgba(37, 99, 235, 0.42);
-      }
-      .btn-sub:hover::before {
-        opacity: 1;
-      }
-      .btn-sub:active {
-        transform: translateY(-1px);
-      }
-      .btn-sub > * {
-        position: relative;
-        z-index: 1;
-      }
-      .btn-sub.ok {
-        background: linear-gradient(135deg, #10b981, #059669);
-      }
-      .btn-sub.ok::before {
-        background: linear-gradient(135deg, #059669, #047857);
-      }
-
-      .f-main {
-        background: var(--navy);
-        border-top: 1px solid rgba(59, 130, 246, 0.14);
-        padding: 64px 0 30px;
-      }
-      .f-brand {
-        font-family: "Playfair Display", serif;
-        font-size: 2rem;
-        font-weight: 900;
-        color: #fff;
-      }
-      .f-brand .ac {
-        color: var(--accent-bright);
-      }
-      .f-desc {
-        color: var(--text-muted);
-        font-size: 0.88rem;
-        max-width: 280px;
-        line-height: 1.75;
-      }
-      .f-lnk {
-        color: rgba(255, 255, 255, 0.42);
-        text-decoration: none;
-        font-size: 0.87rem;
-        transition: all 0.22s;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 4px 0;
-        font-family: "DM Sans", sans-serif;
-      }
-      .f-lnk::before {
-        content: "›";
-        opacity: 0;
-        transform: translateX(-6px);
-        transition: all 0.22s;
-        color: var(--accent-bright);
-        font-size: 0.9rem;
-      }
-      .f-lnk:hover {
-        color: var(--accent-bright);
-        padding-left: 5px;
-      }
-      .f-lnk:hover::before {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      .fsb {
-        width: 44px;
-        height: 44px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        color: rgba(255, 255, 255, 0.55);
-        font-size: 1.05rem;
-        text-decoration: none;
-        transition: all 0.3s;
-        margin-right: 8px;
-        position: relative;
-        overflow: hidden;
-      }
-      .fsb::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: var(--accent);
-        transform: translateY(100%);
-        transition: transform 0.3s;
-      }
-      .fsb:hover {
-        color: #fff;
-        transform: translateY(-4px);
-        box-shadow: 0 9px 22px rgba(37, 99, 235, 0.32);
-        border-color: var(--accent);
-      }
-      .fsb:hover::before {
-        transform: translateY(0);
-      }
-      .fsb i {
-        position: relative;
-        z-index: 1;
-      }
-      .f-bot {
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-        margin-top: 44px;
-        padding-top: 24px;
-        color: rgba(255, 255, 255, 0.28);
-        font-size: 0.82rem;
-        font-family: "DM Sans", sans-serif;
-      }
-
-      #st {
-        position: fixed;
-        bottom: 28px;
-        right: 28px;
-        width: 50px;
-        height: 50px;
-        background: linear-gradient(135deg, var(--accent), #1d4ed8);
-        border-radius: 13px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-size: 1.2rem;
-        cursor: pointer;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.4s;
-        z-index: 999;
-        box-shadow: 0 8px 24px rgba(37, 99, 235, 0.42);
-        border: none;
-      }
-      #st.on {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      #st:hover {
-        transform: translateY(-5px) scale(1.07);
-        box-shadow: 0 14px 34px rgba(37, 99, 235, 0.5);
-      }
-
-      .tn {
-        position: fixed;
-        bottom: 96px;
-        right: 28px;
-        background: var(--navy-card);
-        border: 1px solid rgba(59, 130, 246, 0.28);
-        border-radius: 16px;
-        padding: 16px 20px;
-        color: #fff;
-        font-family: "DM Sans", sans-serif;
-        font-size: 0.88rem;
-        z-index: 9999;
-        transform: translateX(130%);
-        transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        max-width: 280px;
-      }
-      .tn.on {
-        transform: translateX(0);
-      }
-      .t-ico {
-        width: 38px;
-        height: 38px;
-        border-radius: 11px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1rem;
-        flex-shrink: 0;
-      }
-      .t-ok .t-ico {
-        background: rgba(16, 185, 129, 0.15);
-        color: #10b981;
-      }
-      .t-er .t-ico {
-        background: rgba(239, 68, 68, 0.15);
-        color: #ef4444;
-      }
-
-      @media (max-width: 991px) {
-        .sl,
-        .sd,
-        .sn {
-          padding: 72px 0;
-        }
-      }
-      @media (max-width: 767px) {
-        .hero-s {
-          padding: 105px 0 55px;
-          text-align: center;
-        }
-        .h-desc {
-          margin: 0 auto 28px;
-        }
-        .hstats {
-          justify-content: center;
-        }
-        .hero-tag {
-          margin: 0 auto 20px;
-        }
-        .d-flex.gap-3 {
-          justify-content: center;
-        }
-      }
-      @media (max-width: 575px) {
-        .ci-c,
-        .cf-c {
-          padding: 26px;
-        }
-        .f-main {
-          padding: 44px 0 24px;
-        }
-      }
-    </style>
+    <!-- Custom Stylesheet -->
+    <link href="style.css" rel="stylesheet" />
   </head>
   <body>
+
+    <!-- ── Loader ─────────────────────────────────────────── -->
     <div id="loader">
       <div class="ld-logo"><span>D</span>G</div>
       <div class="ld-bar"><div class="ld-fill"></div></div>
     </div>
 
+    <!-- ── Scroll Progress Bar ────────────────────────────── -->
     <div id="prog"></div>
 
+    <!-- ── Custom Cursor ──────────────────────────────────── -->
     <div id="cur"></div>
     <div id="cur-r"></div>
 
+    <!-- ── Toast Notification ─────────────────────────────── -->
     <div id="toast" class="tn t-ok">
       <div class="t-ico"><i class="bi bi-check-lg"></i></div>
       <div id="toast-msg">Berhasil!</div>
     </div>
 
+    <!-- ── Navbar ─────────────────────────────────────────── -->
     <nav class="navbar navbar-expand-lg fixed-top" id="nav">
       <div class="container">
         <a class="navbar-brand" href="#home"><span class="ac">D</span>G</a>
@@ -1621,15 +80,16 @@
               <a class="nav-link nav-link-c" href="#skills">Keahlian</a>
             </li>
             <li class="nav-item ms-2">
-              <a class="nav-link nav-cta" href="#contact"
-                ><i class="bi bi-send-fill me-1"></i>Kontak</a
-              >
+              <a class="nav-link nav-cta" href="#contact">
+                <i class="bi bi-send-fill me-1"></i>Kontak
+              </a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
+    <!-- ── Hero Section ───────────────────────────────────── -->
     <section class="hero-s" id="home">
       <div class="h-mesh">
         <div class="orb o1"></div>
@@ -1639,6 +99,8 @@
       <div class="h-grid"></div>
       <div class="container position-relative" style="z-index: 2">
         <div class="row align-items-center g-5">
+
+          <!-- Left: Text Content -->
           <div class="col-lg-6" data-aos="fade-right" data-aos-duration="900">
             <div class="hero-tag">
               <span class="tdot"></span>Available for Opportunities
@@ -1647,10 +109,7 @@
               Dewa<br /><span class="gr">Gemilang</span>
             </h1>
             <p class="h-role mb-4">
-              Software Engineer<span class="h-sep">·</span>Web Development<span
-                class="h-sep"
-                >·</span
-              >System Analyst
+              Software Engineer<span class="h-sep">·</span>Web Development<span class="h-sep">·</span>System Analyst
             </p>
             <p class="h-desc">
               Mahasiswa Politeknik Negeri Banyuwangi, Program Studi Teknologi
@@ -1661,35 +120,34 @@
             </p>
             <div class="hstats mb-5">
               <div class="hs">
-                <span class="hs-num"><em>3</em>+</span
-                ><span class="hs-lbl">Tahun<br />Pengalaman</span>
+                <span class="hs-num"><em>3</em>+</span>
+                <span class="hs-lbl">Tahun<br />Pengalaman</span>
               </div>
               <div class="hs">
-                <span class="hs-num"><em>10</em>+</span
-                ><span class="hs-lbl">Proyek &<br />Kepanitiaan</span>
+                <span class="hs-num"><em>10</em>+</span>
+                <span class="hs-lbl">Proyek &<br />Kepanitiaan</span>
               </div>
               <div class="hs">
-                <span class="hs-num"><em>91</em></span
-                ><span class="hs-lbl">Nilai Rata-rata<br />SMK</span>
+                <span class="hs-num"><em>91</em></span>
+                <span class="hs-lbl">Nilai Rata-rata<br />SMK</span>
               </div>
             </div>
             <div class="d-flex gap-3 flex-wrap">
-              <a href="#contact" class="btn-pg"
-                ><i class="bi bi-envelope-fill"></i><span>Hubungi Saya</span></a
-              >
+              <a href="#contact" class="btn-pg">
+                <i class="bi bi-envelope-fill"></i><span>Hubungi Saya</span>
+              </a>
               <a
                 href="https://drive.google.com/drive/folders/1m1kQsffbd5zp0TcVZOMcBU6SpzYdcKp7?usp=sharing"
                 class="btn-og"
                 target="_blank"
-                ><i class="bi bi-download"></i><span>Download CV</span></a
               >
+                <i class="bi bi-download"></i><span>Download CV</span>
+              </a>
             </div>
           </div>
-          <div
-            class="col-lg-6 text-center"
-            data-aos="fade-left"
-            data-aos-duration="900"
-          >
+
+          <!-- Right: Profile Photo -->
+          <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-duration="900">
             <div class="prof-w d-inline-block">
               <div class="p-tag">
                 <span class="pt-d"></span><span class="pt-t">Open to Work</span>
@@ -1706,82 +164,55 @@
                 </div>
               </div>
               <div class="p-badge">
-                <span class="p-bnum"
-                  ><i
-                    class="bi bi-star-fill"
-                    style="color: var(--gold); font-size: 1.1rem"
-                  ></i
-                ></span>
+                <span class="p-bnum">
+                  <i class="bi bi-star-fill" style="color: var(--gold); font-size: 1.1rem"></i>
+                </span>
                 <span class="p-btxt">Politeknik<br />Negeri BWI</span>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Scroll Down Hint -->
         <div class="d-none d-lg-flex justify-content-center mt-5">
-          <a
-            href="#education"
-            id="scroll-hint"
-            style="
-              text-decoration: none;
-              color: rgba(255, 255, 255, 0.35);
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              gap: 7px;
-              font-size: 0.68rem;
-              letter-spacing: 2.5px;
-              text-transform: uppercase;
-              font-family: &quot;DM Sans&quot;, sans-serif;
-              transition: color 0.3s;
-            "
-          >
+          <a href="#education" id="scroll-hint" style="
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.35);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.68rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            font-family: 'DM Sans', sans-serif;
+            transition: color 0.3s;
+          ">
             Scroll Down
-            <span
-              style="
-                width: 1px;
-                height: 40px;
-                background: linear-gradient(
-                  to bottom,
-                  rgba(255, 255, 255, 0.5),
-                  transparent
-                );
-                display: block;
-                animation: sca 2s ease-in-out infinite;
-              "
-            ></span>
+            <span style="
+              width: 1px;
+              height: 40px;
+              background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+              display: block;
+              animation: sca 2s ease-in-out infinite;
+            "></span>
           </a>
         </div>
       </div>
     </section>
-    <style>
-      @keyframes sca {
-        0%,
-        100% {
-          opacity: 0.35;
-          transform: scaleY(1);
-        }
-        50% {
-          opacity: 0.85;
-          transform: scaleY(1.35) translateY(5px);
-        }
-      }
-    </style>
 
+    <!-- ── Education Section ───────────────────────────────── -->
     <section class="sl" id="education">
       <div class="container">
         <div data-aos="fade-up">
-          <div class="s-eye">
-            <i class="bi bi-mortarboard-fill"></i>Riwayat Akademik
-          </div>
+          <div class="s-eye"><i class="bi bi-mortarboard-fill"></i>Riwayat Akademik</div>
           <h2 class="s-h">Pendidikan</h2>
           <div class="s-div"></div>
         </div>
         <div class="row g-4">
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
             <div class="edu-c">
-              <div
-                class="d-flex justify-content-between align-items-start mb-3"
-              >
+              <div class="d-flex justify-content-between align-items-start mb-3">
                 <div class="edu-ico"><i class="bi bi-building-fill"></i></div>
                 <span class="edu-yr">2023 – Sekarang</span>
               </div>
@@ -1803,9 +234,7 @@
           </div>
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <div class="edu-c">
-              <div
-                class="d-flex justify-content-between align-items-start mb-3"
-              >
+              <div class="d-flex justify-content-between align-items-start mb-3">
                 <div class="edu-ico"><i class="bi bi-laptop-fill"></i></div>
                 <span class="edu-yr">2020 – 2023</span>
               </div>
@@ -1815,17 +244,7 @@
               <p class="text-muted mb-1" style="font-size: 0.88rem">
                 Teknik Komputer dan Jaringan
               </p>
-              <p
-                class="mb-4"
-                style="
-                  font-size: 0.86rem;
-                  color: var(--accent);
-                  font-weight: 800;
-                  display: inline-flex;
-                  align-items: center;
-                  gap: 6px;
-                "
-              >
+              <p class="mb-4" style="font-size: 0.86rem; color: var(--accent); font-weight: 800; display: inline-flex; align-items: center; gap: 6px;">
                 <i class="bi bi-award-fill"></i>Nilai Kelulusan: 91.39
               </p>
               <div>
@@ -1839,6 +258,7 @@
       </div>
     </section>
 
+    <!-- ── Experience Section ─────────────────────────────── -->
     <section class="sn" id="experience">
       <div class="container">
         <div data-aos="fade-up">
@@ -1848,97 +268,63 @@
           <h2 class="s-h s-h-w">Pengalaman</h2>
           <div class="s-div w"></div>
         </div>
+
+        <!-- Tab Navigation -->
         <div class="etw mb-5" data-aos="fade-up">
           <ul class="nav nav-pills flex-wrap" role="tablist">
             <li class="nav-item" role="presentation">
-              <button
-                class="nav-link active"
-                data-bs-toggle="pill"
-                data-bs-target="#es"
-                type="button"
-              >
+              <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#es" type="button">
                 <i class="bi bi-mortarboard-fill"></i>Pendidikan
               </button>
             </li>
             <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                data-bs-toggle="pill"
-                data-bs-target="#em"
-                type="button"
-              >
+              <button class="nav-link" data-bs-toggle="pill" data-bs-target="#em" type="button">
                 <i class="bi bi-building-check"></i>Magang & Kerja
               </button>
             </li>
             <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                data-bs-toggle="pill"
-                data-bs-target="#eo"
-                type="button"
-              >
+              <button class="nav-link" data-bs-toggle="pill" data-bs-target="#eo" type="button">
                 <i class="bi bi-people-fill"></i>Organisasi
               </button>
             </li>
             <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                data-bs-toggle="pill"
-                data-bs-target="#ep"
-                type="button"
-              >
+              <button class="nav-link" data-bs-toggle="pill" data-bs-target="#ep" type="button">
                 <i class="bi bi-calendar-event-fill"></i>Kepanitiaan
               </button>
             </li>
             <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                data-bs-toggle="pill"
-                data-bs-target="#ev"
-                type="button"
-              >
+              <button class="nav-link" data-bs-toggle="pill" data-bs-target="#ev" type="button">
                 <i class="bi bi-heart-fill"></i>Volunteer
               </button>
             </li>
           </ul>
         </div>
+
+        <!-- Tab Content -->
         <div class="tab-content">
+
+          <!-- Tab: Pendidikan -->
           <div class="tab-pane fade show active" id="es" role="tabpanel">
             <div data-aos="fade-up">
-              <p class="ssl">
-                <i class="bi bi-mortarboard-fill"></i>Riwayat Pendidikan &
-                Prestasi
-              </p>
+              <p class="ssl"><i class="bi bi-mortarboard-fill"></i>Riwayat Pendidikan & Prestasi</p>
               <div class="tl">
                 <div class="tc position-relative">
                   <span class="td"></span>
-                  <div
-                    class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2"
-                  >
+                  <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
                     <h6 class="et mb-0">Politeknik Negeri Banyuwangi</h6>
                     <span class="ebdg bs">D4 Aktif</span>
                   </div>
                   <p class="es">D4 Teknologi Rekayasa Perangkat Lunak</p>
-                  <p class="ep">
-                    <i class="bi bi-calendar3"></i>2023 – Sekarang
-                  </p>
+                  <p class="ep"><i class="bi bi-calendar3"></i>2023 – Sekarang</p>
                   <ul class="el">
-                    <li>
-                      Mempelajari pengembangan perangkat lunak berbasis web dan
-                      mobile
-                    </li>
+                    <li>Mempelajari pengembangan perangkat lunak berbasis web dan mobile</li>
                     <li>Aktif dalam kegiatan himpunan mahasiswa jurusan</li>
-                    <li>
-                      Mengembangkan proyek-proyek IT untuk kebutuhan kampus dan
-                      masyarakat
-                    </li>
+                    <li>Mengembangkan proyek-proyek IT untuk kebutuhan kampus dan masyarakat</li>
                   </ul>
                 </div>
                 <div class="tc position-relative">
                   <span class="td"></span>
-                  <div
-                    class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2"
-                  >
+                  <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
                     <h6 class="et mb-0">SMK Negeri Darul Ulum</h6>
                     <span class="ebdg bs">Lulus</span>
                   </div>
@@ -1948,127 +334,91 @@
                     <i class="bi bi-award-fill"></i> Nilai: 91.39
                   </p>
                   <ul class="el">
-                    <li>
-                      Mempelajari konfigurasi jaringan, administrasi sistem, dan
-                      infrastruktur IT
-                    </li>
-                    <li>
-                      Praktik kerja industri di CV. Keppo Computer sebagai
-                      teknisi jaringan
-                    </li>
+                    <li>Mempelajari konfigurasi jaringan, administrasi sistem, dan infrastruktur IT</li>
+                    <li>Praktik kerja industri di CV. Keppo Computer sebagai teknisi jaringan</li>
                     <li>Lulus dengan nilai kelulusan 91.39</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- Tab: Magang & Kerja -->
           <div class="tab-pane fade" id="em" role="tabpanel">
             <div data-aos="fade-up">
-              <p class="ssl">
-                <i class="bi bi-building-check"></i>Praktik Kerja Industri &
-                Magang
-              </p>
+              <p class="ssl"><i class="bi bi-building-check"></i>Praktik Kerja Industri & Magang</p>
               <div class="tl">
                 <div class="tc position-relative">
                   <span class="td"></span>
-                  <div
-                    class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2"
-                  >
+                  <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
                     <h6 class="et mb-0">CV. Keppo Computer</h6>
                     <span class="ebdg bm">Magang / PKL</span>
                   </div>
                   <p class="es">Teknisi Komputer & Jaringan</p>
                   <p class="ep">
-                    <i class="bi bi-calendar3"></i>2021 – 2022 &nbsp;·&nbsp;
-                    Banyuwangi, Jawa Timur
+                    <i class="bi bi-calendar3"></i>2021 – 2022 &nbsp;·&nbsp; Banyuwangi, Jawa Timur
                   </p>
                   <ul class="el">
-                    <li>
-                      Melakukan servis laptop dan komputer pelanggan (hardware &
-                      software)
-                    </li>
-                    <li>
-                      Instalasi dan konfigurasi jaringan WiFi menggunakan
-                      Mikrotik dan access point
-                    </li>
+                    <li>Melakukan servis laptop dan komputer pelanggan (hardware & software)</li>
+                    <li>Instalasi dan konfigurasi jaringan WiFi menggunakan Mikrotik dan access point</li>
                     <li>Melakukan instalasi dan konfigurasi sistem CCTV</li>
-                    <li>
-                      Mengelola instalasi Windows dan pengaturan perangkat lunak
-                    </li>
+                    <li>Mengelola instalasi Windows dan pengaturan perangkat lunak</li>
                     <li>Memberikan layanan konsultasi IT kepada pelanggan</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- Tab: Organisasi -->
           <div class="tab-pane fade" id="eo" role="tabpanel">
             <div data-aos="fade-up">
-              <p class="ssl">
-                <i class="bi bi-globe2"></i>Organisasi Tingkat Kampus
-              </p>
+              <p class="ssl"><i class="bi bi-globe2"></i>Organisasi Tingkat Kampus</p>
               <div class="tl">
                 <div class="tc position-relative">
                   <span class="td"></span>
-                  <div
-                    class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2"
-                  >
-                    <h6 class="et mb-0">
-                      Himpunan Mahasiswa Bisnis dan Informatika (HMJBI)
-                    </h6>
+                  <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
+                    <h6 class="et mb-0">Himpunan Mahasiswa Bisnis dan Informatika (HMJBI)</h6>
                     <span class="ebdg bo">Himpunan Jurusan</span>
                   </div>
-                  <p class="es">
-                    Departemen Pengembangan Sumber Daya Mahasiswa (PSDM)
-                  </p>
-                  <p class="ep">
-                    <i class="bi bi-calendar3"></i>2023 – Sekarang
-                  </p>
+                  <p class="es">Departemen Pengembangan Sumber Daya Mahasiswa (PSDM)</p>
+                  <p class="ep"><i class="bi bi-calendar3"></i>2023 – Sekarang</p>
                   <ul class="el mb-3">
                     <li>Anggota aktif Departemen PSDM HMJBI sejak 2023</li>
-                    <li>
-                      Terlibat dalam perencanaan dan pelaksanaan program
-                      pengembangan mahasiswa
-                    </li>
+                    <li>Terlibat dalam perencanaan dan pelaksanaan program pengembangan mahasiswa</li>
                   </ul>
                   <div class="d-flex align-items-center gap-2 flex-wrap mt-2">
                     <span class="ebdg bo">Anggota PSDM</span>
-                    <i
-                      class="bi bi-arrow-right"
-                      style="color: var(--text-muted); font-size: 0.8rem"
-                    ></i>
+                    <i class="bi bi-arrow-right" style="color: var(--text-muted); font-size: 0.8rem"></i>
                     <span class="ebdg bo">Koordinator PSDM</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- Tab: Kepanitiaan -->
           <div class="tab-pane fade" id="ep" role="tabpanel">
             <div class="row g-4">
               <div class="col-lg-6" data-aos="fade-up">
-                <p class="ssl">
-                  <i class="bi bi-flag-fill"></i>Kepanitiaan Tingkat Politeknik
-                </p>
+                <p class="ssl"><i class="bi bi-flag-fill"></i>Kepanitiaan Tingkat Politeknik</p>
                 <div class="tl">
                   <div class="tc position-relative">
                     <span class="td"></span>
                     <h6 class="et">PKKMB 2024 Politeknik Negeri Banyuwangi</h6>
                     <div class="d-flex flex-wrap gap-2 mb-2">
-                      <span class="ebdg bp">Sie. Perkab</span
-                      ><span class="ebdg bp">Tingkat Politeknik</span>
+                      <span class="ebdg bp">Sie. Perkab</span>
+                      <span class="ebdg bp">Tingkat Politeknik</span>
                     </div>
                     <p class="ep"><i class="bi bi-calendar3"></i>2024</p>
                     <p class="es mb-0">
-                      Pengenalan Kehidupan Kampus bagi Mahasiswa Baru tingkat
-                      Politeknik Negeri Banyuwangi.
+                      Pengenalan Kehidupan Kampus bagi Mahasiswa Baru tingkat Politeknik Negeri Banyuwangi.
                     </p>
                   </div>
                 </div>
               </div>
               <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                <p class="ssl">
-                  <i class="bi bi-building-fill"></i>Kepanitiaan Tingkat Kampus
-                  / Jurusan
-                </p>
+                <p class="ssl"><i class="bi bi-building-fill"></i>Kepanitiaan Tingkat Kampus / Jurusan</p>
                 <div class="tl">
                   <div class="tc position-relative">
                     <span class="td"></span>
@@ -2076,16 +426,13 @@
                     <span class="ebdg bp">Sie. Acara</span>
                     <p class="ep mt-2"><i class="bi bi-calendar3"></i>2024</p>
                     <p class="es mb-0">
-                      Pengenalan kehidupan jurusan bagi mahasiswa baru Bisnis
-                      dan Informatika.
+                      Pengenalan kehidupan jurusan bagi mahasiswa baru Bisnis dan Informatika.
                     </p>
                   </div>
                 </div>
               </div>
               <div class="col-12" data-aos="fade-up" data-aos-delay="150">
-                <p class="ssl">
-                  <i class="bi bi-people-fill"></i>Kepanitiaan Tingkat Himpunan
-                </p>
+                <p class="ssl"><i class="bi bi-people-fill"></i>Kepanitiaan Tingkat Himpunan</p>
                 <div class="row g-3">
                   <div class="col-md-6">
                     <div class="tl">
@@ -2093,25 +440,19 @@
                         <span class="td"></span>
                         <h6 class="et">Aplikasi Jurusan HMJTI 2023</h6>
                         <span class="ebdg bp">Ketua Panitia</span>
-                        <p class="ep mt-2">
-                          <i class="bi bi-calendar3"></i>2023
-                        </p>
+                        <p class="ep mt-2"><i class="bi bi-calendar3"></i>2023</p>
                       </div>
                       <div class="tc position-relative">
                         <span class="td"></span>
                         <h6 class="et">Sidang AD/ART HMJBI</h6>
                         <span class="ebdg bp">Sie. Perkab</span>
-                        <p class="ep mt-2">
-                          <i class="bi bi-calendar3"></i>2023
-                        </p>
+                        <p class="ep mt-2"><i class="bi bi-calendar3"></i>2023</p>
                       </div>
                       <div class="tc position-relative">
                         <span class="td"></span>
                         <h6 class="et">PMK HMJBI</h6>
                         <span class="ebdg bp">Sie. Perkab</span>
-                        <p class="ep mt-2">
-                          <i class="bi bi-calendar3"></i>2023
-                        </p>
+                        <p class="ep mt-2"><i class="bi bi-calendar3"></i>2023</p>
                       </div>
                     </div>
                   </div>
@@ -2121,17 +462,13 @@
                         <span class="td"></span>
                         <h6 class="et">Creativest Besinfo HMJBI</h6>
                         <span class="ebdg bp">Sie. Perkab</span>
-                        <p class="ep mt-2">
-                          <i class="bi bi-calendar3"></i>2024
-                        </p>
+                        <p class="ep mt-2"><i class="bi bi-calendar3"></i>2024</p>
                       </div>
                       <div class="tc position-relative">
                         <span class="td"></span>
                         <h6 class="et">Regenerasi HMJBI</h6>
                         <span class="ebdg bp">Ketua Panitia</span>
-                        <p class="ep mt-2">
-                          <i class="bi bi-calendar3"></i>2024
-                        </p>
+                        <p class="ep mt-2"><i class="bi bi-calendar3"></i>2024</p>
                       </div>
                     </div>
                   </div>
@@ -2139,66 +476,47 @@
               </div>
             </div>
           </div>
+
+          <!-- Tab: Volunteer -->
           <div class="tab-pane fade" id="ev" role="tabpanel">
             <div data-aos="fade-up">
-              <p class="ssl">
-                <i class="bi bi-heart-fill"></i>Kegiatan Sosial & Sukarela
-              </p>
+              <p class="ssl"><i class="bi bi-heart-fill"></i>Kegiatan Sosial & Sukarela</p>
               <div class="tl">
                 <div class="tc position-relative">
                   <span class="td"></span>
-                  <div
-                    class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2"
-                  >
+                  <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
                     <h6 class="et mb-0">Panitia PKKMB 2024</h6>
                     <span class="ebdg bv">Sukarela</span>
                   </div>
-                  <p class="es">
-                    Kontribusi dalam menyambut mahasiswa baru Politeknik Negeri
-                    Banyuwangi
-                  </p>
+                  <p class="es">Kontribusi dalam menyambut mahasiswa baru Politeknik Negeri Banyuwangi</p>
                   <p class="ep"><i class="bi bi-calendar3"></i>2024</p>
                   <ul class="el">
-                    <li>
-                      Membantu pengelolaan perlengkapan dan kebutuhan acara
-                      sebagai Sie. Perkab
-                    </li>
-                    <li>
-                      Berkontribusi dalam menciptakan lingkungan kampus yang
-                      inklusif bagi mahasiswa baru
-                    </li>
+                    <li>Membantu pengelolaan perlengkapan dan kebutuhan acara sebagai Sie. Perkab</li>
+                    <li>Berkontribusi dalam menciptakan lingkungan kampus yang inklusif bagi mahasiswa baru</li>
                   </ul>
                 </div>
                 <div class="tc position-relative">
                   <span class="td"></span>
-                  <div
-                    class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2"
-                  >
+                  <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
                     <h6 class="et mb-0">Pendampingan Mahasiswa Baru</h6>
                     <span class="ebdg bv">Mentor Jurusan</span>
                   </div>
-                  <p class="es">
-                    Pengenalan Kehidupan Jurusan Bisnis dan Informatika
-                  </p>
+                  <p class="es">Pengenalan Kehidupan Jurusan Bisnis dan Informatika</p>
                   <p class="ep"><i class="bi bi-calendar3"></i>2024</p>
                   <ul class="el">
-                    <li>
-                      Menjadi fasilitator Sie. Acara untuk mengenalkan kehidupan
-                      kampus jurusan
-                    </li>
-                    <li>
-                      Membantu mahasiswa baru beradaptasi dengan lingkungan
-                      akademik
-                    </li>
+                    <li>Menjadi fasilitator Sie. Acara untuk mengenalkan kehidupan kampus jurusan</li>
+                    <li>Membantu mahasiswa baru beradaptasi dengan lingkungan akademik</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
+    <!-- ── Skills Section ─────────────────────────────────── -->
     <section class="sl" id="skills">
       <div class="container">
         <div data-aos="fade-up">
@@ -2207,118 +525,72 @@
           <div class="s-div"></div>
         </div>
         <div class="row g-4">
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="scc">
               <div class="si-w si-b"><i class="bi bi-code-slash"></i></div>
               <h5 class="mb-1" style="color: var(--navy)">Technical Skills</h5>
-              <p class="text-muted mb-3" style="font-size: 0.82rem">
-                Bahasa Pemrograman & Tools
-              </p>
+              <p class="text-muted mb-3" style="font-size: 0.82rem">Bahasa Pemrograman & Tools</p>
               <div>
-                <span class="sp">HTML5</span><span class="sp">CSS3</span
-                ><span class="sp">PHP</span><span class="sp">Dart</span
-                ><span class="sp">JavaScript</span
-                ><span class="sp">Flutter</span><span class="sp">Bootstrap</span
-                ><span class="sp">Figma</span>
+                <span class="sp">HTML5</span>
+                <span class="sp">CSS3</span>
+                <span class="sp">PHP</span>
+                <span class="sp">Dart</span>
+                <span class="sp">JavaScript</span>
+                <span class="sp">Flutter</span>
+                <span class="sp">Bootstrap</span>
+                <span class="sp">Figma</span>
               </div>
             </div>
           </div>
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="scc">
               <div class="si-w si-a"><i class="bi bi-router-fill"></i></div>
-              <h5 class="mb-1" style="color: var(--navy)">
-                Infrastructure & Systems
-              </h5>
-              <p class="text-muted mb-3" style="font-size: 0.82rem">
-                Jaringan & Sistem Operasi
-              </p>
+              <h5 class="mb-1" style="color: var(--navy)">Infrastructure & Systems</h5>
+              <p class="text-muted mb-3" style="font-size: 0.82rem">Jaringan & Sistem Operasi</p>
               <div>
-                <span class="sp">Mikrotik</span
-                ><span class="sp">Access Point Config</span
-                ><span class="sp">CCTV Installation</span
-                ><span class="sp">Windows Admin</span
-                ><span class="sp">Network Infrastructure</span
-                ><span class="sp">System Administration</span>
+                <span class="sp">Mikrotik</span>
+                <span class="sp">Access Point Config</span>
+                <span class="sp">CCTV Installation</span>
+                <span class="sp">Windows Admin</span>
+                <span class="sp">Network Infrastructure</span>
+                <span class="sp">System Administration</span>
               </div>
             </div>
           </div>
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="scc">
-              <div class="si-w si-g">
-                <i class="bi bi-person-badge-fill"></i>
-              </div>
-              <h5 class="mb-1" style="color: var(--navy)">
-                Productivity & Soft Skills
-              </h5>
-              <p class="text-muted mb-3" style="font-size: 0.82rem">
-                Komunikasi & Kepemimpinan
-              </p>
+              <div class="si-w si-g"><i class="bi bi-person-badge-fill"></i></div>
+              <h5 class="mb-1" style="color: var(--navy)">Productivity & Soft Skills</h5>
+              <p class="text-muted mb-3" style="font-size: 0.82rem">Komunikasi & Kepemimpinan</p>
               <div>
-                <span class="sp">Microsoft Office</span
-                ><span class="sp">Leadership</span
-                ><span class="sp">Public Speaking</span
-                ><span class="sp">Team Coordination</span
-                ><span class="sp">Event Management</span>
+                <span class="sp">Microsoft Office</span>
+                <span class="sp">Leadership</span>
+                <span class="sp">Public Speaking</span>
+                <span class="sp">Team Coordination</span>
+                <span class="sp">Event Management</span>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Interests -->
         <div class="mt-5" data-aos="fade-up">
-          <h6
-            class="mb-3"
-            style="
-              color: var(--navy);
-              font-family: &quot;DM Sans&quot;, sans-serif;
-              font-weight: 800;
-              font-size: 0.85rem;
-              text-transform: uppercase;
-              letter-spacing: 1.5px;
-            "
-          >
+          <h6 class="mb-3" style="color: var(--navy); font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px;">
             Minat & Passion
           </h6>
           <div>
-            <span class="ip"
-              ><i class="bi bi-code-square-fill" style="color: #60a5fa"></i
-              >Software Development</span
-            >
-            <span class="ip"
-              ><i class="bi bi-bar-chart-fill" style="color: #34d399"></i>Data
-              Analysis</span
-            >
-            <span class="ip"
-              ><i class="bi bi-palette-fill" style="color: #fbbf24"></i>UI/UX
-              Design</span
-            >
-            <span class="ip"
-              ><i class="bi bi-rocket-fill" style="color: #f472b6"></i>Startup
-              Business</span
-            >
-            <span class="ip"
-              ><i class="bi bi-people-fill" style="color: #a78bfa"></i
-              >Leadership</span
-            >
-            <span class="ip"
-              ><i class="bi bi-book-fill" style="color: #2dd4bf"></i
-              >Teaching</span
-            >
+            <span class="ip"><i class="bi bi-code-square-fill" style="color: #60a5fa"></i>Software Development</span>
+            <span class="ip"><i class="bi bi-bar-chart-fill" style="color: #34d399"></i>Data Analysis</span>
+            <span class="ip"><i class="bi bi-palette-fill" style="color: #fbbf24"></i>UI/UX Design</span>
+            <span class="ip"><i class="bi bi-rocket-fill" style="color: #f472b6"></i>Startup Business</span>
+            <span class="ip"><i class="bi bi-people-fill" style="color: #a78bfa"></i>Leadership</span>
+            <span class="ip"><i class="bi bi-book-fill" style="color: #2dd4bf"></i>Teaching</span>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ── Contact Section ────────────────────────────────── -->
     <section class="sd" id="contact">
       <div class="container">
         <div data-aos="fade-up">
@@ -2327,38 +599,28 @@
           <div class="s-div"></div>
         </div>
         <div class="row g-4">
+
+          <!-- Contact Info -->
           <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
             <div class="ci-c">
-              <h5 class="text-white mb-1" style="font-size: 1.3rem">
-                Informasi Kontak
-              </h5>
-              <p
-                class="mb-4"
-                style="
-                  color: var(--text-muted);
-                  font-size: 0.88rem;
-                  font-family: &quot;DM Sans&quot;, sans-serif;
-                "
-              >
+              <h5 class="text-white mb-1" style="font-size: 1.3rem">Informasi Kontak</h5>
+              <p class="mb-4" style="color: var(--text-muted); font-size: 0.88rem; font-family: 'DM Sans', sans-serif;">
                 Jangan ragu untuk menghubungi saya kapan saja.
               </p>
-              <a
-                href="mailto:dewagemilang18@gmail.com"
-                class="c-item"
-                style="color: white"
-                ><div class="c-ico"><i class="bi bi-envelope-fill"></i></div>
+              <a href="mailto:dewagemilang18@gmail.com" class="c-item" style="color: white">
+                <div class="c-ico"><i class="bi bi-envelope-fill"></i></div>
                 <div>
                   <div class="c-lbl">Email</div>
                   <div class="c-txt">dewagemilang18@gmail.com</div>
-                </div></a
-              >
-              <a href="tel:+6282131655241" class="c-item" style="color: white"
-                ><div class="c-ico"><i class="bi bi-telephone-fill"></i></div>
+                </div>
+              </a>
+              <a href="tel:+6282131655241" class="c-item" style="color: white">
+                <div class="c-ico"><i class="bi bi-telephone-fill"></i></div>
                 <div>
                   <div class="c-lbl">Phone</div>
                   <div class="c-txt">+62 821 3165 5241</div>
-                </div></a
-              >
+                </div>
+              </a>
               <div class="c-item" style="color: white; cursor: default">
                 <div class="c-ico"><i class="bi bi-geo-alt-fill"></i></div>
                 <div>
@@ -2366,101 +628,54 @@
                   <div class="c-txt">Desa Kedungringin, Muncar, Banyuwangi</div>
                 </div>
               </div>
-              <a
-                href="https://linkedin.com/in/de.wa_gemilang"
-                target="_blank"
-                class="c-item"
-                style="color: white"
-                ><div class="c-ico"><i class="bi bi-linkedin"></i></div>
+              <a href="https://linkedin.com/in/de.wa_gemilang" target="_blank" class="c-item" style="color: white">
+                <div class="c-ico"><i class="bi bi-linkedin"></i></div>
                 <div>
                   <div class="c-lbl">LinkedIn</div>
                   <div class="c-txt">de.wa_gemilang</div>
-                </div></a
-              >
-              <a
-                href="https://instagram.com/de.wa_gemilang"
-                target="_blank"
-                class="c-item"
-                style="color: white"
-                ><div class="c-ico"><i class="bi bi-instagram"></i></div>
+                </div>
+              </a>
+              <a href="https://instagram.com/de.wa_gemilang" target="_blank" class="c-item" style="color: white">
+                <div class="c-ico"><i class="bi bi-instagram"></i></div>
                 <div>
                   <div class="c-lbl">Instagram</div>
                   <div class="c-txt">@de.wa_gemilang</div>
-                </div></a
-              >
-              <a
-                href="https://wa.me/6282131655241"
-                target="_blank"
-                class="c-item"
-                style="color: white"
-                ><div class="c-ico"><i class="bi bi-whatsapp"></i></div>
+                </div>
+              </a>
+              <a href="https://wa.me/6282131655241" target="_blank" class="c-item" style="color: white">
+                <div class="c-ico"><i class="bi bi-whatsapp"></i></div>
                 <div>
                   <div class="c-lbl">WhatsApp</div>
                   <div class="c-txt">Chat Sekarang</div>
-                </div></a
-              >
+                </div>
+              </a>
             </div>
           </div>
+
+          <!-- Contact Form -->
           <div class="col-lg-7" data-aos="fade-up" data-aos-delay="200">
             <div class="cf-c">
-              <h5 class="mb-1" style="color: var(--navy); font-size: 1.3rem">
-                Kirim Pesan
-              </h5>
-              <p
-                class="text-muted mb-4"
-                style="
-                  font-size: 0.88rem;
-                  font-family: &quot;DM Sans&quot;, sans-serif;
-                "
-              >
+              <h5 class="mb-1" style="color: var(--navy); font-size: 1.3rem">Kirim Pesan</h5>
+              <p class="text-muted mb-4" style="font-size: 0.88rem; font-family: 'DM Sans', sans-serif;">
                 Isi formulir di bawah dan saya akan segera merespons.
               </p>
               <form id="cForm" novalidate>
                 <div class="row g-3">
                   <div class="col-sm-6">
-                    <label class="f-lbl"
-                      >Nama Lengkap <span style="color: #ef4444">*</span></label
-                    >
-                    <input
-                      type="text"
-                      class="f-ctrl"
-                      id="iNama"
-                      placeholder="Nama Anda"
-                      required
-                    />
+                    <label class="f-lbl">Nama Lengkap <span style="color: #ef4444">*</span></label>
+                    <input type="text" class="f-ctrl" id="iNama" placeholder="Nama Anda" required />
                   </div>
                   <div class="col-sm-6">
-                    <label class="f-lbl"
-                      >Email <span style="color: #ef4444">*</span></label
-                    >
-                    <input
-                      type="email"
-                      class="f-ctrl"
-                      id="iEmail"
-                      placeholder="email@anda.com"
-                      required
-                    />
+                    <label class="f-lbl">Email <span style="color: #ef4444">*</span></label>
+                    <input type="email" class="f-ctrl" id="iEmail" placeholder="email@anda.com" required />
                   </div>
                   <div class="col-12">
                     <label class="f-lbl">Subjek</label>
-                    <input
-                      type="text"
-                      class="f-ctrl"
-                      id="iSubjek"
-                      placeholder="Topik pesan Anda"
-                    />
+                    <input type="text" class="f-ctrl" id="iSubjek" placeholder="Topik pesan Anda" />
                   </div>
                   <div class="col-12">
-                    <label class="f-lbl"
-                      >Pesan <span style="color: #ef4444">*</span></label
-                    >
-                    <textarea
-                      class="f-ctrl"
-                      id="iPesan"
-                      rows="5"
-                      placeholder="Tuliskan pesan Anda di sini..."
-                      required
-                    ></textarea>
+                    <label class="f-lbl">Pesan <span style="color: #ef4444">*</span></label>
+                    <textarea class="f-ctrl" id="iPesan" rows="5" placeholder="Tuliskan pesan Anda di sini..." required></textarea>
                   </div>
                   <div class="col-12">
                     <button type="submit" class="btn-sub" id="sbtn">
@@ -2472,10 +687,12 @@
               </form>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
+    <!-- ── Footer ─────────────────────────────────────────── -->
     <footer class="f-main">
       <div class="container">
         <div class="row g-5">
@@ -2486,67 +703,32 @@
               dalam membangun solusi digital inovatif.
             </p>
             <div>
-              <a
-                href="https://linkedin.com/in/de.wa_gemilang"
-                target="_blank"
-                class="fsb"
-                title="LinkedIn"
-                ><i class="bi bi-linkedin"></i
-              ></a>
-              <a
-                href="https://instagram.com/de.wa_gemilang"
-                target="_blank"
-                class="fsb"
-                title="Instagram"
-                ><i class="bi bi-instagram"></i
-              ></a>
-              <a
-                href="https://wa.me/6282131655241"
-                target="_blank"
-                class="fsb"
-                title="WhatsApp"
-                ><i class="bi bi-whatsapp"></i
-              ></a>
-              <a
-                href="mailto:dewagemilang18@gmail.com"
-                class="fsb"
-                title="Email"
-                ><i class="bi bi-envelope-fill"></i
-              ></a>
+              <a href="https://linkedin.com/in/de.wa_gemilang" target="_blank" class="fsb" title="LinkedIn">
+                <i class="bi bi-linkedin"></i>
+              </a>
+              <a href="https://instagram.com/de.wa_gemilang" target="_blank" class="fsb" title="Instagram">
+                <i class="bi bi-instagram"></i>
+              </a>
+              <a href="https://wa.me/6282131655241" target="_blank" class="fsb" title="WhatsApp">
+                <i class="bi bi-whatsapp"></i>
+              </a>
+              <a href="mailto:dewagemilang18@gmail.com" class="fsb" title="Email">
+                <i class="bi bi-envelope-fill"></i>
+              </a>
             </div>
           </div>
           <div class="col-lg-2 col-6">
-            <p
-              style="
-                color: rgba(255, 255, 255, 0.35);
-                font-size: 0.72rem;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                font-weight: 700;
-                font-family: &quot;DM Sans&quot;, sans-serif;
-                margin-bottom: 16px;
-              "
-            >
+            <p style="color: rgba(255,255,255,0.35); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; font-family: 'DM Sans', sans-serif; margin-bottom: 16px;">
               Navigasi
             </p>
-            <a href="#home" class="f-lnk">Beranda</a>
-            <a href="#education" class="f-lnk">Pendidikan</a>
+            <a href="#home"       class="f-lnk">Beranda</a>
+            <a href="#education"  class="f-lnk">Pendidikan</a>
             <a href="#experience" class="f-lnk">Pengalaman</a>
-            <a href="#skills" class="f-lnk">Keahlian</a>
-            <a href="#contact" class="f-lnk">Kontak</a>
+            <a href="#skills"     class="f-lnk">Keahlian</a>
+            <a href="#contact"    class="f-lnk">Kontak</a>
           </div>
           <div class="col-lg-3 col-6">
-            <p
-              style="
-                color: rgba(255, 255, 255, 0.35);
-                font-size: 0.72rem;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                font-weight: 700;
-                font-family: &quot;DM Sans&quot;, sans-serif;
-                margin-bottom: 16px;
-              "
-            >
+            <p style="color: rgba(255,255,255,0.35); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; font-family: 'DM Sans', sans-serif; margin-bottom: 16px;">
               Keahlian
             </p>
             <a href="#skills" class="f-lnk">Web Development</a>
@@ -2555,60 +737,31 @@
             <a href="#skills" class="f-lnk">Network Specialist</a>
           </div>
           <div class="col-lg-3">
-            <p
-              style="
-                color: rgba(255, 255, 255, 0.35);
-                font-size: 0.72rem;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                font-weight: 700;
-                font-family: &quot;DM Sans&quot;, sans-serif;
-                margin-bottom: 16px;
-              "
-            >
+            <p style="color: rgba(255,255,255,0.35); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; font-family: 'DM Sans', sans-serif; margin-bottom: 16px;">
               Kontak
             </p>
             <p class="f-desc mb-3">
-              <i
-                class="bi bi-envelope-fill me-2"
-                style="color: var(--accent-bright)"
-              ></i
-              >dewagemilang18@gmail.com<br /><i
-                class="bi bi-telephone-fill me-2 mt-2 d-inline-block"
-                style="color: var(--accent-bright)"
-              ></i
-              >+62 821 3165 5241
+              <i class="bi bi-envelope-fill me-2" style="color: var(--accent-bright)"></i>dewagemilang18@gmail.com<br />
+              <i class="bi bi-telephone-fill me-2 mt-2 d-inline-block" style="color: var(--accent-bright)"></i>+62 821 3165 5241
             </p>
             <a
               href="https://drive.google.com/file/d/1WUm-JXrQpkk-Oe1KQnU0J4kZWqG2yWrl/view?usp=sharing"
               target="_blank"
               class="btn-pg"
               style="padding: 10px 22px; font-size: 0.88rem; border-radius: 9px"
-              ><i class="bi bi-download"></i><span>Download CV</span></a
             >
+              <i class="bi bi-download"></i><span>Download CV</span>
+            </a>
           </div>
         </div>
-        <div
-          class="f-bot d-flex flex-wrap justify-content-between align-items-center gap-2"
-        >
-          <span
-            >© 2025
-            <strong style="color: rgba(255, 255, 255, 0.45)"
-              >Dewa Gemilang</strong
-            >. All rights reserved.</span
-          >
-          <span
-            >Built with
-            <i
-              class="bi bi-heart-fill"
-              style="color: #ef4444; font-size: 0.75rem"
-            ></i>
-            & Bootstrap 5</span
-          >
+        <div class="f-bot d-flex flex-wrap justify-content-between align-items-center gap-2">
+          <span>© 2025 <strong style="color: rgba(255,255,255,0.45)">Dewa Gemilang</strong>. All rights reserved.</span>
+          <span>Built with <i class="bi bi-heart-fill" style="color: #ef4444; font-size: 0.75rem"></i> & Bootstrap 5</span>
         </div>
       </div>
     </footer>
 
+    <!-- ── Scroll-to-Top Button ────────────────────────────── -->
     <button
       id="st"
       title="Kembali ke atas"
@@ -2618,167 +771,10 @@
       <i class="bi bi-arrow-up"></i>
     </button>
 
+    <!-- ── Scripts ─────────────────────────────────────────── -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-      AOS.init({
-        duration: 760,
-        once: true,
-        offset: 50,
-        easing: "ease-out-cubic",
-      });
+    <script src="script.js"></script>
 
-      window.addEventListener("load", () =>
-        setTimeout(
-          () => document.getElementById("loader").classList.add("out"),
-          1500,
-        ),
-      );
-
-      const cur = document.getElementById("cur"),
-        cr = document.getElementById("cur-r");
-      if (cur)
-        document.addEventListener("mousemove", (e) => {
-          cur.style.left = cr.style.left = e.clientX + "px";
-          cur.style.top = cr.style.top = e.clientY + "px";
-        });
-      document
-        .querySelectorAll("a,button,.sp,.s-chip,.ip,.si-w,.tc,.edu-c,.scc")
-        .forEach((el) => {
-          el.addEventListener("mouseenter", () =>
-            document.body.classList.add("cur-big"),
-          );
-          el.addEventListener("mouseleave", () =>
-            document.body.classList.remove("cur-big"),
-          );
-        });
-
-      window.addEventListener("scroll", () => {
-        const st = window.scrollY,
-          dh = document.documentElement.scrollHeight - window.innerHeight;
-        document.getElementById("prog").style.width = (st / dh) * 100 + "%";
-        document.getElementById("st").classList.toggle("on", st > 400);
-        document.getElementById("nav").classList.toggle("sc", st > 60);
-        let cur = "";
-        document.querySelectorAll("section[id]").forEach((s) => {
-          if (st >= s.offsetTop - 120) cur = s.id;
-        });
-        document.querySelectorAll(".nav-link-c").forEach((l) => {
-          l.classList.remove("on");
-          if (l.getAttribute("href") === "#" + cur) l.classList.add("on");
-        });
-      });
-
-      document.querySelectorAll(".btn-pg,.btn-sub").forEach((btn) => {
-        btn.addEventListener("click", function (e) {
-          const r = document.createElement("span"),
-            rect = this.getBoundingClientRect(),
-            sz = Math.max(rect.width, rect.height);
-          r.className = "rpl";
-          r.style.cssText = `width:${sz}px;height:${sz}px;left:${e.clientX - rect.left - sz / 2}px;top:${e.clientY - rect.top - sz / 2}px`;
-          this.appendChild(r);
-          setTimeout(() => r.remove(), 700);
-        });
-      });
-
-      function toast(msg, t = "ok") {
-        const el = document.getElementById("toast"),
-          mi = document.getElementById("toast-msg");
-        mi.textContent = msg;
-        el.className = `tn t-${t}`;
-        el.querySelector("i").className =
-          t === "ok" ? "bi bi-check-lg" : "bi bi-x-circle-fill";
-        el.classList.add("on");
-        setTimeout(() => el.classList.remove("on"), 3600);
-      }
-
-      document.getElementById("cForm").addEventListener("submit", function (e) {
-        e.preventDefault();
-        const n = document.getElementById("iNama").value.trim(),
-          em = document.getElementById("iEmail").value.trim(),
-          s = document.getElementById("iSubjek").value.trim(),
-          p = document.getElementById("iPesan").value.trim(),
-          btn = document.getElementById("sbtn");
-
-        const shake = (el) => {
-          el.style.borderColor = "#ef4444";
-          el.style.animation = "shk .4s ease";
-          setTimeout(() => {
-            el.style.animation = "";
-            el.style.borderColor = "";
-          }, 600);
-        };
-        if (!n || !em || !p) {
-          if (!n) shake(document.getElementById("iNama"));
-          if (!em) shake(document.getElementById("iEmail"));
-          if (!p) shake(document.getElementById("iPesan"));
-          toast("Harap isi semua kolom wajib (*)", "er");
-          return;
-        }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) {
-          shake(document.getElementById("iEmail"));
-          toast("Format email tidak valid", "er");
-          return;
-        }
-
-        btn.innerHTML =
-          '<svg style="width:22px;height:22px;animation:spin-s .7s linear infinite" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><path d="M12 2a10 10 0 0 1 10 10" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>';
-        btn.style.pointerEvents = "none";
-
-        setTimeout(() => {
-          const body = `Nama: ${n}\nEmail: ${em}\n\n${p}`,
-            subj = s || "Pesan dari Website Portofolio";
-          window.open(
-            `https://mail.google.com/mail/?view=cm&fs=1&to=dewagemilang18@gmail.com&su=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`,
-            "_blank",
-          );
-          btn.classList.add("ok");
-          btn.innerHTML =
-            '<i class="bi bi-check-circle-fill" style="font-size:1.1rem"></i><span class="bt">Terkirim!</span>';
-          btn.style.pointerEvents = "auto";
-          toast("Gmail terbuka — pesan siap dikirim!", "ok");
-          document.getElementById("cForm").reset();
-          setTimeout(() => {
-            btn.classList.remove("ok");
-            btn.innerHTML =
-              '<i class="bi bi-send-fill"></i><span class="bt">Kirim Pesan</span>';
-          }, 3200);
-        }, 1300);
-      });
-
-      const tog = document.querySelector(".navbar-toggler");
-      tog.addEventListener("click", function () {
-        const sp = this.querySelectorAll(".hmb span"),
-          on = this.classList.toggle("hact");
-        sp[0].style.cssText = on
-          ? "transform:rotate(45deg) translate(5px,5px)"
-          : "";
-        sp[1].style.cssText = on ? "opacity:0;transform:translateX(-8px)" : "";
-        sp[2].style.cssText = on
-          ? "transform:rotate(-45deg) translate(5px,-5px)"
-          : "";
-      });
-      document
-        .getElementById("nv")
-        .addEventListener("hidden.bs.collapse", () => {
-          tog.classList.remove("hact");
-          tog
-            .querySelectorAll(".hmb span")
-            .forEach((s) => (s.style.cssText = ""));
-        });
-      document.querySelectorAll("#nv .nav-link").forEach((l) =>
-        l.addEventListener("click", () => {
-          const c = bootstrap.Collapse.getInstance(
-            document.getElementById("nv"),
-          );
-          if (c) c.hide();
-        }),
-      );
-
-      const ks = document.createElement("style");
-      ks.textContent =
-        "@keyframes shk{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}@keyframes spin-s{to{transform:rotate(360deg)}}";
-      document.head.appendChild(ks);
-    </script>
   </body>
 </html>
